@@ -1,7 +1,9 @@
 package conf
 
 import(
-	"os"
+	"bufio"
+	"bytes"
+	"encoding/json"
 	"github.com/yanjinzh6/youzhe-server/tools"
 )
 
@@ -13,6 +15,12 @@ type Config struct {
 type serverConfig struct {
 	Addr string
 	Port string
+	HandlerList []handlerItem
+}
+
+type handlerItem struct {
+	Action string
+	MyFunc string
 }
 
 type redisConfig struct {
@@ -23,7 +31,7 @@ type redisConfig struct {
 var config *Config
 
 func InitConfig(filePath string) (conf *Config) {
-	if filePath == nil || filePath == "" {
+	if filePath == "" {
 		filePath = tools.DEFAULT_CONFIG_FILE
 	}
 	if config == nil {
@@ -44,8 +52,8 @@ func InitConfig(filePath string) (conf *Config) {
 		if bufs.Len() == 0 {
 			//nothing
 			config = &Config{
-				Server: {Addr: "127.0.0.1", Port: "3333"},
-				Redis: {Addr: "127.0.0.1", Port: "6379"},
+				Server: serverConfig{Addr: "127.0.0.1", Port: "3333", HandlerList: []handlerItem{handlerItem{Action: "/", MyFunc: "index"}}},
+				Redis: redisConfig{Addr: "127.0.0.1", Port: "6379"},
 			}
 			tools.Println(config)
 			writer := bufio.NewWriterSize(file, tools.DEFAULT_BUFFER_SIZE)

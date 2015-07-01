@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	DEFAULT_CONFIG_FILE = "/conf/config.json"
+	DEFAULT_CONFIG_FILE = "conf/config.json"
 	DEFAULT_BUFFER_SIZE = 2048
 )
 
