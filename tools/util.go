@@ -19,6 +19,7 @@ var (
 
 var (
 	NilKeyError = errors.New("nil key error")
+	KeyNotNilError = errors.New("key-value not nil error")
 )
 
 func Printf(format string, a ...interface{}) (n int, err error) {
