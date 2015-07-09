@@ -20,6 +20,9 @@ var (
 var (
 	NilKeyError = errors.New("nil key error")
 	KeyNotNilError = errors.New("key-value not nil error")
+	FuncNotFoundError = errors.New("can not found the func error")
+	ActionNotFoundError = errors.New("can not found the action error")
+	ActionParamError = errors.New("now need the param like /url/url2")
 )
 
 func Printf(format string, a ...interface{}) (n int, err error) {
@@ -59,7 +62,7 @@ func LoadFile(filePath string) (file *os.File, err error) {
 }
 
 func InitFile(filePath string) (file *os.File, err error) {
-	file, err = os.OpenFile(filePath, os.O_RDWR, 0x0666)
+	file, err = os.OpenFile(filePath, os.O_RDWR | os.O_APPEND | os.O_CREATE, 0x0666)
 	if err != nil {
 		if os.IsExist(err) {
 			Println(err)

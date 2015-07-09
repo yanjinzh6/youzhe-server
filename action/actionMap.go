@@ -4,34 +4,35 @@ import (
 	"github.com/yanjinzh6/youzhe-server/tools"
 )
 
-type actionMap struct {
+type ActionMap struct {
 	acMap map[string]interface{}
 }
 
-var myAcMap *actionMap
+var MyAcMap *ActionMap
 
 func init() {
-	myAcMap = New()
+	MyAcMap = New()
 }
 
-func New() (aMap *actionMap) {
-	if (myAcMap == nil) {
-		myAcMap = &actionMap {
+func New() (aMap *ActionMap) {
+	if (MyAcMap == nil) {
+		MyAcMap = &ActionMap {
 			acMap : make(map[string]interface{}),
 		}
 	}
-	return myAcMap
+	return MyAcMap
 }
 
-func (a *actionMap) get(key string) (val interface{}) {
+func (a *ActionMap) Get(key string) (val interface{}) {
 	return a.acMap[key]
 }
 
-func (a *actionMap) set(key string, val interface{}) (oldVal interface{}, err error) {
+func (a *ActionMap) Set(key string, val interface{}) (oldVal interface{}, err error) {
 	if a.acMap[key] != nil {
 		oldVal = a.acMap[key]
 		err = tools.KeyNotNilError
 	}
 	a.acMap[key] = val
+	tools.Println("ActionMap size: ", len(a.acMap))
 	return
 }
