@@ -48,6 +48,7 @@ func (sig *signalMap) handle(s os.Signal, arg interface{}) {
 
 func myHandler(s os.Signal, arg interface{}) {
 	log.Println("handle signal", s)
+	os.Exit(9)
 }
 
 func signalNotify(mySigMap *signalMap) {
