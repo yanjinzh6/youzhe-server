@@ -22,7 +22,7 @@ func InitServer() {
 		med, err := conf.FindMethod(ht.MyFunc)
 		if err == nil {
 			handler := func (w http.ResponseWriter, r *http.Request) {
-				tools.Println(r.RemoteAddr, r.Host)
+				tools.Println("RemoteAddr:", r.RemoteAddr, "ServerHost:", r.Host, "RequestURI", r.RequestURI)
 				var nUrl = ""
 				if strings.Contains(r.Host, ":") {
 					var hp = strings.Split(r.Host, ":")
@@ -47,7 +47,7 @@ func InitServer() {
 		}
 	}
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		tools.Println(r.RemoteAddr, r.Host)
+		tools.Println("RemoteAddr:", r.RemoteAddr, "ServerHost:", r.Host, "RequestURI", r.RequestURI)
 		var nUrl = ""
 			if strings.Contains(r.Host, ":") {
 				var hp = strings.Split(r.Host, ":")
@@ -65,6 +65,8 @@ func InitServer() {
 					} else {
 						t.Execute(w, nil)
 					}
+				} else if r.URL.Path == "/favicon.ico" {
+					http.ServeFile(w, r, "template/favicon.ico")
 				} else {
 					t, err := template.ParseFiles("template/404.html")
 					if err != nil {
