@@ -4,8 +4,10 @@ import (
 	"reflect"
 	"net/http"
 	"html/template"
+	"strings"
 	"github.com/yanjinzh6/youzhe-server/conf"
 	"github.com/yanjinzh6/youzhe-server/tools"
+	"github.com/yanjinzh6/youzhe-server/log"
 )
 
 func InitServer() {
@@ -20,37 +22,69 @@ func InitServer() {
 		med, err := conf.FindMethod(ht.MyFunc)
 		if err == nil {
 			handler := func (w http.ResponseWriter, r *http.Request) {
-				in[0] = reflect.ValueOf(w)
-				in[1] = reflect.ValueOf(r)
-				//tools.Println(in, "\n", w, "\n", r)
-				med.Call(in)
+				tools.Println(r.RemoteAddr, r.Host)
+				var nUrl = ""
+				if strings.Contains(r.Host, ":") {
+					var hp = strings.Split(r.Host, ":")
+					if strings.EqualFold(hp[1], config.Server.Port) {
+						nUrl = "https://" + hp[0] + ":" + config.Server.Ports + r.RequestURI
+					}
+				} else {
+					nUrl = "https://" + r.Host + ":" + config.Server.Ports + r.RequestURI
+				}
+				if nUrl == "" {
+					in[0] = reflect.ValueOf(w)
+					in[1] = reflect.ValueOf(r)
+					//tools.Println(in, "\n", w, "\n", r)
+					med.Call(in)
+				} else {
+					http.Redirect(w, r, nUrl, http.StatusFound)
+				}
 			}
 			http.HandleFunc(ht.Action, handler)
 		} else {
 			tools.Println(err)
 		}
 	}
-	http.HandleFunc("/", NotFoundHandler)
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		tools.Println(r.RemoteAddr, r.Host)
+		var nUrl = ""
+			if strings.Contains(r.Host, ":") {
+				var hp = strings.Split(r.Host, ":")
+				if strings.EqualFold(hp[1], config.Server.Port) {
+					nUrl = "https://" + hp[0] + ":" + config.Server.Ports + r.RequestURI
+				}
+			} else {
+				nUrl = "https://" + r.Host + ":" + config.Server.Ports + r.RequestURI
+			}
+			if nUrl == "" {
+				if r.URL.Path == "/" {
+					t, err := template.ParseFiles("template/index.html")
+					if err != nil {
+						tools.Println(err)
+					} else {
+						t.Execute(w, nil)
+					}
+				} else {
+					t, err := template.ParseFiles("template/404.html")
+					if err != nil {
+						tools.Println(err)
+					} else {
+						t.Execute(w, nil)
+					}
+				}
+			} else {
+				http.Redirect(w, r, nUrl, http.StatusFound)
+			}
+	})
+	go func() {
+		err := http.ListenAndServeTLS(":" + config.Server.Ports, "cert.pem", "key.pem", nil)
+		if (err != nil) {
+			log.Fatalln("ListenAndServeTLS error: ", err)
+		}
+	}()
 	err := http.ListenAndServe(":" + config.Server.Port, nil)
 	if (err != nil) {
-		tools.Println(err)
-	}
-}
-
-func NotFoundHandler(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path == "/" {
-		t, err := template.ParseFiles("template/index.html")
-		if err != nil {
-			tools.Println(err)
-		} else {
-			t.Execute(w, nil)
-		}
-	} else {
-		t, err := template.ParseFiles("template/404.html")
-		if err != nil {
-			tools.Println(err)
-		} else {
-			t.Execute(w, nil)
-		}
+		log.Fatalln("ListenAndServe error: ", err)
 	}
 }

@@ -15,6 +15,7 @@ type Config struct {
 type serverConfig struct {
 	Addr string
 	Port string
+	Ports string
 	HandlerList []handlerItem
 }
 
@@ -52,7 +53,7 @@ func InitConfig(filePath string) (conf *Config) {
 		if bufs.Len() == 0 {
 			//nothing
 			config = &Config{
-				Server: serverConfig{Addr: "127.0.0.1", Port: "3333", HandlerList: []handlerItem{handlerItem{Action: "/index", MyFunc: "/index/Index"}}},
+				Server: serverConfig{Addr: "127.0.0.1", Port: "3333", Ports: "1443", HandlerList: []handlerItem{handlerItem{Action: "/index", MyFunc: "/index/Index"}}},
 				Redis: redisConfig{Addr: "127.0.0.1", Port: "6379"},
 			}
 			tools.Println(config)

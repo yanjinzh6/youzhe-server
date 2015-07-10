@@ -15,6 +15,7 @@ const (
 
 var (
 	Debug = true
+	SaveLog = true
 )
 
 var (

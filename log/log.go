@@ -15,5 +15,19 @@ func init() {
 }
 
 func Println(arg ...interface{}) {
-	log.Println(arg ...)
+	if tools.SaveLog {
+		log.Println(arg ...)
+	}
+}
+
+func Fatalln(arg ...interface{}) {
+	if tools.SaveLog {
+		log.Fatalln(arg ...)
+	}
+}
+
+func Panicln(arg ...interface{}) {
+	if tools.SaveLog {
+		log.Panicln(arg ...)
+	}
 }
