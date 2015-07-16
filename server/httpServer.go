@@ -15,7 +15,7 @@ func InitServer() {
 	http.Handle("/js/", http.FileServer(http.Dir("template")))
 	http.Handle("/img/", http.FileServer(http.Dir("template")))
 	http.Handle("/fonts/", http.FileServer(http.Dir("template")))
-	config := conf.InitConfig(tools.DEFAULT_CONFIG_FILE)
+	//config := conf.InitConfig(tools.DEFAULT_CONFIG_FILE)
 	in := make([]reflect.Value, 2)
 	//http.HandleFunc(config.Server.HandlerList[0].Action, config.Server.HandlerList[0].MyFunc)
 	for _, ht := range config.Server.HandlerList {
@@ -26,11 +26,11 @@ func InitServer() {
 				var nUrl = ""
 				if strings.Contains(r.Host, ":") {
 					var hp = strings.Split(r.Host, ":")
-					if strings.EqualFold(hp[1], config.Server.Port) {
-						nUrl = "https://" + hp[0] + ":" + config.Server.Ports + r.RequestURI
+					if strings.EqualFold(hp[1], conf.MyConfig.Server.Port) {
+						nUrl = "https://" + hp[0] + ":" + conf.MyConfig.Server.Ports + r.RequestURI
 					}
 				} else {
-					nUrl = "https://" + r.Host + ":" + config.Server.Ports + r.RequestURI
+					nUrl = "https://" + r.Host + ":" + conf.MyConfig.Server.Ports + r.RequestURI
 				}
 				if nUrl == "" {
 					in[0] = reflect.ValueOf(w)

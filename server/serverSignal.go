@@ -1,6 +1,7 @@
 package server
 
 import (
+	"github.com/yanjinzh6/youzhe-server/db"
 	"github.com/yanjinzh6/youzhe-server/log"
 	"os"
 	"os/signal"
@@ -48,6 +49,7 @@ func (sig *signalMap) handle(s os.Signal, arg interface{}) {
 
 func myHandler(s os.Signal, arg interface{}) {
 	log.Println("handle signal", s)
+	db.Close()
 	os.Exit(9)
 }
 

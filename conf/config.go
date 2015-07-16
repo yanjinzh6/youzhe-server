@@ -29,13 +29,17 @@ type redisConfig struct {
 	Port string
 }
 
-var config *Config
+var MyConfig *Config
+
+func init() {
+	MyConfig = InitConfig("")
+}
 
 func InitConfig(filePath string) (conf *Config) {
 	if filePath == "" {
 		filePath = tools.DEFAULT_CONFIG_FILE
 	}
-	if config == nil {
+	if MyConfig == nil {
 		file, err := tools.LoadFile(filePath)
 		tools.Println(err)
 		reader := bufio.NewReaderSize(file, tools.DEFAULT_BUFFER_SIZE)
@@ -52,21 +56,21 @@ func InitConfig(filePath string) (conf *Config) {
 		tools.Println(bufs.Len())
 		if bufs.Len() == 0 {
 			//nothing
-			config = &Config{
+			MyConfig = &Config{
 				Server: serverConfig{Addr: "127.0.0.1", Port: "3333", Ports: "1443", HandlerList: []handlerItem{handlerItem{Action: "/index", MyFunc: "/index/Index"}}},
 				Redis:  redisConfig{Addr: "127.0.0.1", Port: "6379"},
 			}
-			tools.Println(config)
+			tools.Println(MyConfig)
 			writer := bufio.NewWriterSize(file, tools.DEFAULT_BUFFER_SIZE)
-			buf, err = json.Marshal(&config)
+			buf, err = json.Marshal(&MyConfig)
 			tools.Println(err)
 			n, err := writer.Write(buf)
 			tools.Println(n, err)
 			writer.Flush()
 		} else {
-			err = json.Unmarshal(bufs.Bytes(), &config)
+			err = json.Unmarshal(bufs.Bytes(), &MyConfig)
 			tools.Println(err)
 		}
 	}
-	return config
+	return MyConfig
 }
