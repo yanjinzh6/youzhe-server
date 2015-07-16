@@ -10,13 +10,16 @@ type redisConn struct {
 	Conn redis.Conn
 }
 
-var MyRedis redisConn
+var MyRedis *redisConn
 
-func InitRedis() redisConn {
+func InitRedis() *redisConn {
 	if MyRedis.Conn == nil {
-		_, err := redis.Dial("tcp", ":"+conf.MyConfig.Redis.Port)
+		rconn, err := redis.Dial("tcp", ":"+conf.MyConfig.Redis.Port)
 		if err != nil {
 			log.Println("link redis error", err)
+		}
+		MyRedis = &redisConn{
+			Conn: rconn,
 		}
 	}
 	return MyRedis

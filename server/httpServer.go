@@ -18,7 +18,7 @@ func InitServer() {
 	//config := conf.InitConfig(tools.DEFAULT_CONFIG_FILE)
 	in := make([]reflect.Value, 2)
 	//http.HandleFunc(config.Server.HandlerList[0].Action, config.Server.HandlerList[0].MyFunc)
-	for _, ht := range config.Server.HandlerList {
+	for _, ht := range conf.MyConfig.Server.HandlerList {
 		med, err := conf.FindMethod(ht.MyFunc)
 		if err == nil {
 			handler := func(w http.ResponseWriter, r *http.Request) {
@@ -51,11 +51,11 @@ func InitServer() {
 		var nUrl = ""
 		if strings.Contains(r.Host, ":") {
 			var hp = strings.Split(r.Host, ":")
-			if strings.EqualFold(hp[1], config.Server.Port) {
-				nUrl = "https://" + hp[0] + ":" + config.Server.Ports + r.RequestURI
+			if strings.EqualFold(hp[1], conf.MyConfig.Server.Port) {
+				nUrl = "https://" + hp[0] + ":" + conf.MyConfig.Server.Ports + r.RequestURI
 			}
 		} else {
-			nUrl = "https://" + r.Host + ":" + config.Server.Ports + r.RequestURI
+			nUrl = "https://" + r.Host + ":" + conf.MyConfig.Server.Ports + r.RequestURI
 		}
 		if nUrl == "" {
 			if r.URL.Path == "/" {
@@ -80,12 +80,12 @@ func InitServer() {
 		}
 	})
 	go func() {
-		err := http.ListenAndServeTLS(":"+config.Server.Ports, "cert.pem", "key.pem", nil)
+		err := http.ListenAndServeTLS(":"+conf.MyConfig.Server.Ports, "cert.pem", "key.pem", nil)
 		if err != nil {
 			log.Fatalln("ListenAndServeTLS error: ", err)
 		}
 	}()
-	err := http.ListenAndServe(":"+config.Server.Port, nil)
+	err := http.ListenAndServe(":"+conf.MyConfig.Server.Port, nil)
 	if err != nil {
 		log.Fatalln("ListenAndServe error: ", err)
 	}
