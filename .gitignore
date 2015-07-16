@@ -22,3 +22,7 @@ _testmain.go
 *.exe
 *.test
 *.prof
+/conf/config.json
+/log/debug.log
+/cert.pem
+/key.pem
