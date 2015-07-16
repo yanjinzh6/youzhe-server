@@ -1,0 +1,389 @@
+/**
+ * forms.css
+ */
+
+/*!
+pure v0.6.0
+Copyright 2014 Yahoo! Inc. All rights reserved.
+Licensed under the BSD License.
+https://github.com/yahoo/pure/blob/master/LICENSE.md
+*/
+/*csslint box-model:false*/
+/*
+Box-model set to false because we're setting a height on select elements, which
+also have border and padding. This is done because some browsers don't render
+the padding. We explicitly set the box-model for select elements to border-box,
+so we can ignore the csslint warning.
+*/
+@charset "utf-8";
+
+.yz-form input[type="text"],
+.yz-form input[type="password"],
+.yz-form input[type="email"],
+.yz-form input[type="url"],
+.yz-form input[type="date"],
+.yz-form input[type="month"],
+.yz-form input[type="time"],
+.yz-form input[type="datetime"],
+.yz-form input[type="datetime-local"],
+.yz-form input[type="week"],
+.yz-form input[type="number"],
+.yz-form input[type="search"],
+.yz-form input[type="tel"],
+.yz-form input[type="color"],
+.yz-form select,
+.yz-form textarea {
+    padding: 0.2em 0.4em;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 5px;
+    vertical-align: middle;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+.yz-form input:not([type]) {
+    padding: 0.2em 0.4em;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+/* Chrome (as of v.32/34 on OS X) needs additional room for color to display. */
+/* May be able to remove this tweak as color inputs become more standardized across browsers. */
+.yz-form input[type="color"] {
+    padding: 0.2em 0.5em;
+}
+
+
+.yz-form input[type="text"]:focus,
+.yz-form input[type="password"]:focus,
+.yz-form input[type="email"]:focus,
+.yz-form input[type="url"]:focus,
+.yz-form input[type="date"]:focus,
+.yz-form input[type="month"]:focus,
+.yz-form input[type="time"]:focus,
+.yz-form input[type="datetime"]:focus,
+.yz-form input[type="datetime-local"]:focus,
+.yz-form input[type="week"]:focus,
+.yz-form input[type="number"]:focus,
+.yz-form input[type="search"]:focus,
+.yz-form input[type="tel"]:focus,
+.yz-form input[type="color"]:focus,
+.yz-form select:focus,
+.yz-form textarea:focus {
+    outline: 0;
+    border-color: #129FEA;
+}
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+.yz-form input:not([type]):focus {
+    outline: 0;
+    border-color: #129FEA;
+}
+
+.yz-form input[type="file"]:focus,
+.yz-form input[type="radio"]:focus,
+.yz-form input[type="checkbox"]:focus {
+    outline: thin solid #129FEA;
+    outline: 1px auto #129FEA;
+}
+.yz-form .yz-checkbox,
+.yz-form .yz-radio {
+    margin: 0.5em 0;
+    display: block;
+}
+
+.yz-form input[type="text"][disabled],
+.yz-form input[type="password"][disabled],
+.yz-form input[type="email"][disabled],
+.yz-form input[type="url"][disabled],
+.yz-form input[type="date"][disabled],
+.yz-form input[type="month"][disabled],
+.yz-form input[type="time"][disabled],
+.yz-form input[type="datetime"][disabled],
+.yz-form input[type="datetime-local"][disabled],
+.yz-form input[type="week"][disabled],
+.yz-form input[type="number"][disabled],
+.yz-form input[type="search"][disabled],
+.yz-form input[type="tel"][disabled],
+.yz-form input[type="color"][disabled],
+.yz-form select[disabled],
+.yz-form textarea[disabled] {
+    cursor: not-allowed;
+    background-color: #eaeded;
+    color: #cad2d3;
+}
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+.yz-form input:not([type])[disabled] {
+    cursor: not-allowed;
+    background-color: #eaeded;
+    color: #cad2d3;
+}
+.yz-form input[readonly],
+.yz-form select[readonly],
+.yz-form textarea[readonly] {
+    background-color: #eee; /* menu hover bg color */
+    color: #777; /* menu text color */
+    border-color: #ccc;
+}
+
+.yz-form input:focus:invalid,
+.yz-form textarea:focus:invalid,
+.yz-form select:focus:invalid {
+    color: #b94a48;
+    border-color: #e9322d;
+}
+.yz-form input[type="file"]:focus:invalid:focus,
+.yz-form input[type="radio"]:focus:invalid:focus,
+.yz-form input[type="checkbox"]:focus:invalid:focus {
+    outline-color: #e9322d;
+}
+.yz-form select {
+    /* Normalizes the height; padding is not sufficient. */
+    height: 2.25em;
+    border: 1px solid #ccc;
+    background-color: white;
+}
+.yz-form select[multiple] {
+    height: auto;
+}
+.yz-form label {
+    margin: 0.5em 0 0.2em;
+}
+.yz-form fieldset {
+    margin: 0;
+    padding: 0.35em 0 0.75em;
+    border: 0;
+}
+.yz-form legend {
+    display: block;
+    width: 100%;
+    padding: 0.3em 0;
+    margin-bottom: 0.3em;
+    color: #333;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.yz-form-stacked input[type="text"],
+.yz-form-stacked input[type="password"],
+.yz-form-stacked input[type="email"],
+.yz-form-stacked input[type="url"],
+.yz-form-stacked input[type="date"],
+.yz-form-stacked input[type="month"],
+.yz-form-stacked input[type="time"],
+.yz-form-stacked input[type="datetime"],
+.yz-form-stacked input[type="datetime-local"],
+.yz-form-stacked input[type="week"],
+.yz-form-stacked input[type="number"],
+.yz-form-stacked input[type="search"],
+.yz-form-stacked input[type="tel"],
+.yz-form-stacked input[type="color"],
+.yz-form-stacked input[type="file"],
+.yz-form-stacked select,
+.yz-form-stacked label,
+.yz-form-stacked textarea {
+    display: block;
+    margin: 0.25em 0;
+}
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+.yz-form-stacked input:not([type]) {
+    display: block;
+    margin: 0.25em 0;
+}
+.yz-form-aligned input,
+.yz-form-aligned textarea,
+.yz-form-aligned select,
+/* NOTE: yz-help-inline is deprecated. Use .yz-form-message-inline instead. */
+.yz-form-aligned .yz-help-inline,
+.yz-form-message-inline {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
+}
+.yz-form-aligned textarea {
+    vertical-align: top;
+}
+
+/* Aligned Forms */
+.yz-form-aligned .yz-control-group {
+    margin-bottom: 0.5em;
+}
+.yz-form-aligned .yz-control-group label {
+    text-align: right;
+    display: inline-block;
+    vertical-align: middle;
+    width: 10em;
+    margin: 0 1em 0 0;
+}
+.yz-form-aligned .yz-controls {
+    margin: 1.5em 0 0 11em;
+}
+
+/* Rounded Inputs */
+.yz-form input.yz-input-rounded,
+.yz-form .yz-input-rounded {
+    border-radius: 2em;
+    padding: 0.5em 1em;
+}
+
+/* Grouped Inputs */
+.yz-form .yz-group fieldset {
+    margin-bottom: 10px;
+}
+.yz-form .yz-group input,
+.yz-form .yz-group textarea {
+    display: block;
+    padding: 10px;
+    margin: 0 0 -1px;
+    border-radius: 0;
+    position: relative;
+    top: -1px;
+}
+.yz-form .yz-group input:focus,
+.yz-form .yz-group textarea:focus {
+    z-index: 3;
+}
+.yz-form .yz-group input:first-child,
+.yz-form .yz-group textarea:first-child {
+    top: 1px;
+    border-radius: 4px 4px 0 0;
+    margin: 0;
+}
+.yz-form .yz-group input:first-child:last-child,
+.yz-form .yz-group textarea:first-child:last-child {
+    top: 1px;
+    border-radius: 4px;
+    margin: 0;
+}
+.yz-form .yz-group input:last-child,
+.yz-form .yz-group textarea:last-child {
+    top: -2px;
+    border-radius: 0 0 4px 4px;
+    margin: 0;
+}
+.yz-form .yz-group button {
+    margin: 0.35em 0;
+}
+
+.yz-form .yz-input-1 {
+    width: 100%;
+}
+.yz-form .yz-input-2-3 {
+    width: 66%;
+}
+.yz-form .yz-input-1-2 {
+    width: 50%;
+}
+.yz-form .yz-input-1-3 {
+    width: 33%;
+}
+.yz-form .yz-input-1-4 {
+    width: 25%;
+}
+
+/* Inline help for forms */
+/* NOTE: yz-help-inline is deprecated. Use .yz-form-message-inline instead. */
+.yz-form .yz-help-inline,
+.yz-form-message-inline {
+    display: inline-block;
+    padding-left: 0.3em;
+    color: #666;
+    vertical-align: middle;
+    font-size: 0.875em;
+}
+
+/* Block help for forms */
+.yz-form-message {
+    display: block;
+    color: #666;
+    font-size: 0.875em;
+}
+
+@media only screen and (max-width : 480px) {
+    .yz-form button[type="submit"] {
+        margin: 0.7em 0 0;
+    }
+
+    .yz-form input:not([type]),
+    .yz-form input[type="text"],
+    .yz-form input[type="password"],
+    .yz-form input[type="email"],
+    .yz-form input[type="url"],
+    .yz-form input[type="date"],
+    .yz-form input[type="month"],
+    .yz-form input[type="time"],
+    .yz-form input[type="datetime"],
+    .yz-form input[type="datetime-local"],
+    .yz-form input[type="week"],
+    .yz-form input[type="number"],
+    .yz-form input[type="search"],
+    .yz-form input[type="tel"],
+    .yz-form input[type="color"],
+    .yz-form label {
+        margin-bottom: 0.3em;
+        display: block;
+    }
+
+    .yz-group input:not([type]),
+    .yz-group input[type="text"],
+    .yz-group input[type="password"],
+    .yz-group input[type="email"],
+    .yz-group input[type="url"],
+    .yz-group input[type="date"],
+    .yz-group input[type="month"],
+    .yz-group input[type="time"],
+    .yz-group input[type="datetime"],
+    .yz-group input[type="datetime-local"],
+    .yz-group input[type="week"],
+    .yz-group input[type="number"],
+    .yz-group input[type="search"],
+    .yz-group input[type="tel"],
+    .yz-group input[type="color"] {
+        margin-bottom: 0;
+    }
+
+    .yz-form-aligned .yz-control-group label {
+        margin-bottom: 0.3em;
+        text-align: left;
+        display: block;
+        width: 100%;
+    }
+
+    .yz-form-aligned .yz-controls {
+        margin: 1.5em 0 0 0;
+    }
+
+    /* NOTE: yz-help-inline is deprecated. Use .yz-form-message-inline instead. */
+    .yz-form .yz-help-inline,
+    .yz-form-message-inline,
+    .yz-form-message {
+        display: block;
+        font-size: 0.75em;
+        /* Increased bottom padding to make it group with its related input element. */
+        padding: 0.2em 0 0.8em;
+    }
+}
