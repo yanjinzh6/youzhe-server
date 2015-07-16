@@ -15,9 +15,9 @@ func init() {
 }
 
 func New() (aMap *ActionMap) {
-	if (MyAcMap == nil) {
-		MyAcMap = &ActionMap {
-			acMap : make(map[string]interface{}),
+	if MyAcMap == nil {
+		MyAcMap = &ActionMap{
+			acMap: make(map[string]interface{}),
 		}
 	}
 	return MyAcMap

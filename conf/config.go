@@ -1,6 +1,6 @@
 package conf
 
-import(
+import (
 	"bufio"
 	"bytes"
 	"encoding/json"
@@ -9,13 +9,13 @@ import(
 
 type Config struct {
 	Server serverConfig
-	Redis redisConfig
+	Redis  redisConfig
 }
 
 type serverConfig struct {
-	Addr string
-	Port string
-	Ports string
+	Addr        string
+	Port        string
+	Ports       string
 	HandlerList []handlerItem
 }
 
@@ -54,7 +54,7 @@ func InitConfig(filePath string) (conf *Config) {
 			//nothing
 			config = &Config{
 				Server: serverConfig{Addr: "127.0.0.1", Port: "3333", Ports: "1443", HandlerList: []handlerItem{handlerItem{Action: "/index", MyFunc: "/index/Index"}}},
-				Redis: redisConfig{Addr: "127.0.0.1", Port: "6379"},
+				Redis:  redisConfig{Addr: "127.0.0.1", Port: "6379"},
 			}
 			tools.Println(config)
 			writer := bufio.NewWriterSize(file, tools.DEFAULT_BUFFER_SIZE)

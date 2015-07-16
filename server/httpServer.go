@@ -1,13 +1,13 @@
 package server
 
 import (
-	"reflect"
-	"net/http"
-	"html/template"
-	"strings"
 	"github.com/yanjinzh6/youzhe-server/conf"
-	"github.com/yanjinzh6/youzhe-server/tools"
 	"github.com/yanjinzh6/youzhe-server/log"
+	"github.com/yanjinzh6/youzhe-server/tools"
+	"html/template"
+	"net/http"
+	"reflect"
+	"strings"
 )
 
 func InitServer() {
@@ -21,7 +21,7 @@ func InitServer() {
 	for _, ht := range config.Server.HandlerList {
 		med, err := conf.FindMethod(ht.MyFunc)
 		if err == nil {
-			handler := func (w http.ResponseWriter, r *http.Request) {
+			handler := func(w http.ResponseWriter, r *http.Request) {
 				tools.Println("RemoteAddr:", r.RemoteAddr, "ServerHost:", r.Host, "RequestURI", r.RequestURI)
 				var nUrl = ""
 				if strings.Contains(r.Host, ":") {
@@ -49,44 +49,44 @@ func InitServer() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		tools.Println("RemoteAddr:", r.RemoteAddr, "ServerHost:", r.Host, "RequestURI", r.RequestURI)
 		var nUrl = ""
-			if strings.Contains(r.Host, ":") {
-				var hp = strings.Split(r.Host, ":")
-				if strings.EqualFold(hp[1], config.Server.Port) {
-					nUrl = "https://" + hp[0] + ":" + config.Server.Ports + r.RequestURI
-				}
-			} else {
-				nUrl = "https://" + r.Host + ":" + config.Server.Ports + r.RequestURI
+		if strings.Contains(r.Host, ":") {
+			var hp = strings.Split(r.Host, ":")
+			if strings.EqualFold(hp[1], config.Server.Port) {
+				nUrl = "https://" + hp[0] + ":" + config.Server.Ports + r.RequestURI
 			}
-			if nUrl == "" {
-				if r.URL.Path == "/" {
-					t, err := template.ParseFiles("template/index.html")
-					if err != nil {
-						tools.Println(err)
-					} else {
-						t.Execute(w, nil)
-					}
-				} else if r.URL.Path == "/favicon.ico" {
-					http.ServeFile(w, r, "template/favicon.ico")
+		} else {
+			nUrl = "https://" + r.Host + ":" + config.Server.Ports + r.RequestURI
+		}
+		if nUrl == "" {
+			if r.URL.Path == "/" {
+				t, err := template.ParseFiles("template/index.html")
+				if err != nil {
+					tools.Println(err)
 				} else {
-					t, err := template.ParseFiles("template/404.html")
-					if err != nil {
-						tools.Println(err)
-					} else {
-						t.Execute(w, nil)
-					}
+					t.Execute(w, nil)
 				}
+			} else if r.URL.Path == "/favicon.ico" {
+				http.ServeFile(w, r, "template/favicon.ico")
 			} else {
-				http.Redirect(w, r, nUrl, http.StatusFound)
+				t, err := template.ParseFiles("template/404.html")
+				if err != nil {
+					tools.Println(err)
+				} else {
+					t.Execute(w, nil)
+				}
 			}
+		} else {
+			http.Redirect(w, r, nUrl, http.StatusFound)
+		}
 	})
 	go func() {
-		err := http.ListenAndServeTLS(":" + config.Server.Ports, "cert.pem", "key.pem", nil)
-		if (err != nil) {
+		err := http.ListenAndServeTLS(":"+config.Server.Ports, "cert.pem", "key.pem", nil)
+		if err != nil {
 			log.Fatalln("ListenAndServeTLS error: ", err)
 		}
 	}()
-	err := http.ListenAndServe(":" + config.Server.Port, nil)
-	if (err != nil) {
+	err := http.ListenAndServe(":"+config.Server.Port, nil)
+	if err != nil {
 		log.Fatalln("ListenAndServe error: ", err)
 	}
 }

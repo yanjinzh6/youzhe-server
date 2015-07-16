@@ -1,10 +1,10 @@
 package server
 
 import (
+	"github.com/yanjinzh6/youzhe-server/log"
 	"os"
 	"os/signal"
 	"syscall"
-	"github.com/yanjinzh6/youzhe-server/log"
 )
 
 type signalHandler func(s os.Signal, arg interface{})
@@ -22,7 +22,7 @@ func init() {
 
 func New() (s *signalMap) {
 	if mySignalMap == nil {
-		mySignalMap = &signalMap {
+		mySignalMap = &signalMap{
 			sMap: make(map[os.Signal]signalHandler),
 		}
 	}
@@ -57,9 +57,9 @@ func signalNotify(mySigMap *signalMap) {
 	for s, _ := range mySigMap.sMap {
 		sigs = append(sigs, s)
 	}
-	
+
 	signal.Notify(c)
-	
+
 	for {
 		mySigMap.handle(<-c, nil)
 	}

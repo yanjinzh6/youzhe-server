@@ -1,10 +1,10 @@
 package conf
 
 import (
-	"reflect"
-	"strings"
 	"github.com/yanjinzh6/youzhe-server/action"
 	"github.com/yanjinzh6/youzhe-server/tools"
+	"reflect"
+	"strings"
 )
 
 func FindMethod(f string) (m reflect.Value, err error) {
@@ -14,11 +14,11 @@ func FindMethod(f string) (m reflect.Value, err error) {
 	for _, s := range temp {
 		if s != "" {
 			aStr[flag] = s
-			flag ++
+			flag++
 		}
 	}
 	tools.Println("actionStr is: ", aStr, len(aStr), aStr[0], aStr[1])
-	if (len(aStr) == 2 && aStr[0] != "" && aStr[1] != "") {
+	if len(aStr) == 2 && aStr[0] != "" && aStr[1] != "" {
 		var ac = action.MyAcMap.Get(aStr[0])
 		tools.Println("action struct is: ", ac)
 		if ac != nil {

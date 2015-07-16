@@ -5,5 +5,5 @@ import (
 )
 
 func TestInitServer(t *testing.T) {
-	InitServer();
+	InitServer()
 }
