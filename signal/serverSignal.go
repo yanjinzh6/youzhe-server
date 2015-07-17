@@ -2,6 +2,7 @@ package signal
 
 import (
 	"github.com/yanjinzh6/youzhe-server/db"
+	"github.com/yanjinzh6/youzhe-server/dbm"
 	"github.com/yanjinzh6/youzhe-server/log"
 	"os"
 	"os/signal"
@@ -49,6 +50,7 @@ func (sig *signalMap) handle(s os.Signal, arg interface{}) {
 
 func myHandler(s os.Signal, arg interface{}) {
 	log.Println("handle signal", s)
+	dbm.Close()
 	db.Close()
 	os.Exit(9)
 }

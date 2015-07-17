@@ -1,4 +1,4 @@
-package db
+package dbm
 
 import (
 	"github.com/yanjinzh6/youzhe-server/conf"
@@ -38,4 +38,13 @@ func NewMongodb(url string) (mdb *mongodbSession, e error) {
 
 func (m *mongodbSession) close() {
 	m.Msession.Close()
+}
+
+func Close() {
+	if MyMongodb != nil && MyMongodb.Msession != nil {
+		MyMongodb.close()
+		log.Println("close mongodb session success")
+	} else {
+		log.Println("could not found mongodb session")
+	}
 }
