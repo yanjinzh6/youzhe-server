@@ -1,15 +1,41 @@
 package db
 
 import (
+	"github.com/yanjinzh6/youzhe-server/conf"
+	"github.com/yanjinzh6/youzhe-server/log"
 	"gopkg.in/mgo.v2"
 )
 
 type mongodbSession struct {
-	Msession mgo.Session
+	Msession *mgo.Session
 }
 
-var MyMongodb mongodbSession
+var MyMongodb *mongodbSession
 
-func InitMongodb() {
+func InitMongodb() (mdb *mongodbSession, e error) {
+	if MyMongodb == nil {
+		if ndb, err := NewMongodb(conf.MyConfig.Mongodb.Addr + ":" + conf.MyConfig.Mongodb.Port); err == nil {
+			MyMongodb = ndb
+		}
+	}
+	return MyMongodb, e
+}
 
+func NewMongodb(url string) (mdb *mongodbSession, e error) {
+	if MyMongodb == nil {
+		session, err := mgo.Dial(url)
+		if err != nil {
+			log.Println("connect to mongodb server error", err)
+		} else {
+			MyMongodb = &mongodbSession{
+				Msession: session,
+			}
+			log.Println("connect to mongodb server success")
+		}
+	}
+	return MyMongodb, e
+}
+
+func (m *mongodbSession) close() {
+	m.Msession.Close()
 }

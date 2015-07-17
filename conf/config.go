@@ -26,8 +26,11 @@ type handlerItem struct {
 }
 
 type dbConfig struct {
-	Addr string
-	Port string
+	Addr     string
+	Port     string
+	User     string
+	Password string
+	DbName   string
 }
 
 var MyConfig *Config
@@ -59,8 +62,8 @@ func InitConfig(filePath string) (conf *Config) {
 			//nothing
 			MyConfig = &Config{
 				Server:  serverConfig{Addr: "127.0.0.1", Port: "3333", Ports: "1443", HandlerList: []handlerItem{handlerItem{Action: "/index", MyFunc: "/index/Index"}}},
-				Redis:   dbConfig{Addr: "127.0.0.1", Port: "6379"},
-				Mongodb: dbConfig{Addr: "127.0.0.1", Port: "27017"},
+				Redis:   dbConfig{Addr: "127.0.0.1", Port: "6379", User: "", Password: "", DbName: ""},
+				Mongodb: dbConfig{Addr: "127.0.0.1", Port: "27017", User: "", Password: "", DbName: "yozh"},
 			}
 			//tools.Println(MyConfig)
 			writer := bufio.NewWriterSize(file, tools.DEFAULT_BUFFER_SIZE)
