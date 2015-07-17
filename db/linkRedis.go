@@ -4,6 +4,7 @@ import (
 	"github.com/garyburd/redigo/redis"
 	"github.com/yanjinzh6/youzhe-server/conf"
 	"github.com/yanjinzh6/youzhe-server/log"
+	"github.com/yanjinzh6/youzhe-server/tools"
 )
 
 type redisConn struct {
@@ -13,14 +14,16 @@ type redisConn struct {
 var MyRedis *redisConn
 
 func InitRedis() *redisConn {
-	if MyRedis.Conn == nil {
-		rconn, err := redis.Dial("tcp", ":"+conf.MyConfig.Redis.Port)
+	tools.Println(&MyRedis, MyRedis)
+	if MyRedis == nil {
+		rconn, err := redis.Dial("tcp", conf.MyConfig.Redis.Addr+":"+conf.MyConfig.Redis.Port)
 		if err != nil {
 			log.Println("link redis error", err)
 		}
 		MyRedis = &redisConn{
 			Conn: rconn,
 		}
+		log.Println("redis connect success!")
 	}
 	return MyRedis
 }
@@ -30,6 +33,11 @@ func (r *redisConn) close() {
 }
 
 func Close() {
-	MyRedis.close()
-	log.Println("close redis connect!")
+	tools.Println(&MyRedis, MyRedis)
+	if MyRedis != nil && MyRedis.Conn != nil {
+		MyRedis.close()
+		log.Println("close redis connect!")
+	} else {
+		log.Println("didn't found redis connect!")
+	}
 }
