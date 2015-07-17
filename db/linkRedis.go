@@ -28,21 +28,22 @@ func NewRedis(server, password string) (myredis *redisConn, e error) {
 	if MyRedis == nil {
 		rconn, err := redis.Dial("tcp", server)
 		if err != nil {
-			log.Println("link redis error", err)
+			log.Println("connect to  redis error", err)
 			e = tools.CouldNotConnRedisError
-		}
-		if password != "" {
-			if _, err := rconn.Do("AUTH", password); err != nil {
-				rconn.Close()
-				log.Println("AUTH redis error", err)
-				e = tools.RedisAuthError
+		} else {
+			if password != "" {
+				if _, err := rconn.Do("AUTH", password); err != nil {
+					rconn.Close()
+					log.Println("AUTH redis error", err)
+					e = tools.RedisAuthError
+				}
 			}
-		}
-		if err := rconn.Err(); err == nil {
-			MyRedis = &redisConn{
-				Conn: rconn,
+			if err := rconn.Err(); err == nil {
+				MyRedis = &redisConn{
+					Conn: rconn,
+				}
+				log.Println("redis connect success!")
 			}
-			log.Println("redis connect success!")
 		}
 	}
 	return MyRedis, e
