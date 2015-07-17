@@ -1,4 +1,4 @@
-package server
+package signal
 
 import (
 	"github.com/yanjinzh6/youzhe-server/db"

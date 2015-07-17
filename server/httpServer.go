@@ -1,6 +1,7 @@
 package server
 
 import (
+	"github.com/yanjinzh6/youzhe-server/action"
 	"github.com/yanjinzh6/youzhe-server/conf"
 	"github.com/yanjinzh6/youzhe-server/log"
 	"github.com/yanjinzh6/youzhe-server/tools"
@@ -19,7 +20,7 @@ func InitServer() {
 	in := make([]reflect.Value, 2)
 	//http.HandleFunc(config.Server.HandlerList[0].Action, config.Server.HandlerList[0].MyFunc)
 	for _, ht := range conf.MyConfig.Server.HandlerList {
-		med, err := conf.FindMethod(ht.MyFunc)
+		med, err := action.FindMethod(ht.MyFunc)
 		if err == nil {
 			handler := func(w http.ResponseWriter, r *http.Request) {
 				tools.Println("RemoteAddr:", r.RemoteAddr, "ServerHost:", r.Host, "RequestURI", r.RequestURI)

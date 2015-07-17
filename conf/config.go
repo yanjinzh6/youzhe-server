@@ -8,8 +8,9 @@ import (
 )
 
 type Config struct {
-	Server serverConfig
-	Redis  redisConfig
+	Server  serverConfig
+	Redis   dbConfig
+	Mongodb dbConfig
 }
 
 type serverConfig struct {
@@ -24,7 +25,7 @@ type handlerItem struct {
 	MyFunc string
 }
 
-type redisConfig struct {
+type dbConfig struct {
 	Addr string
 	Port string
 }
@@ -47,7 +48,7 @@ func InitConfig(filePath string) (conf *Config) {
 		bufs := bytes.NewBuffer(buf)
 		for {
 			buf, err := reader.ReadBytes('\n')
-			tools.Println(buf)
+			//tools.Println(buf)
 			bufs.Write(buf)
 			if err != nil {
 				break
@@ -57,10 +58,11 @@ func InitConfig(filePath string) (conf *Config) {
 		if bufs.Len() == 0 {
 			//nothing
 			MyConfig = &Config{
-				Server: serverConfig{Addr: "127.0.0.1", Port: "3333", Ports: "1443", HandlerList: []handlerItem{handlerItem{Action: "/index", MyFunc: "/index/Index"}}},
-				Redis:  redisConfig{Addr: "127.0.0.1", Port: "6379"},
+				Server:  serverConfig{Addr: "127.0.0.1", Port: "3333", Ports: "1443", HandlerList: []handlerItem{handlerItem{Action: "/index", MyFunc: "/index/Index"}}},
+				Redis:   dbConfig{Addr: "127.0.0.1", Port: "6379"},
+				Mongodb: dbConfig{Addr: "127.0.0.1", Port: "27017"},
 			}
-			tools.Println(MyConfig)
+			//tools.Println(MyConfig)
 			writer := bufio.NewWriterSize(file, tools.DEFAULT_BUFFER_SIZE)
 			buf, err = json.Marshal(&MyConfig)
 			tools.Println(err)

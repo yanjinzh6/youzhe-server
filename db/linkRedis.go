@@ -13,6 +13,10 @@ type redisConn struct {
 
 var MyRedis *redisConn
 
+// func init() {
+// 	InitRedis()
+// }
+
 func InitRedis() *redisConn {
 	tools.Println(&MyRedis, MyRedis)
 	if MyRedis == nil {
