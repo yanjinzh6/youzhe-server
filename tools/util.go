@@ -19,11 +19,13 @@ var (
 )
 
 var (
-	NilKeyError         = errors.New("nil key error")
-	KeyNotNilError      = errors.New("key-value not nil error")
-	FuncNotFoundError   = errors.New("can not found the func error")
-	ActionNotFoundError = errors.New("can not found the action error")
-	ActionParamError    = errors.New("now need the param like /url/url2")
+	NilKeyError            = errors.New("nil key error")
+	KeyNotNilError         = errors.New("key-value not nil error")
+	FuncNotFoundError      = errors.New("can not found the func error")
+	ActionNotFoundError    = errors.New("can not found the action error")
+	ActionParamError       = errors.New("now need the param like /url/url2")
+	CouldNotConnRedisError = errors.New("could not connect to redis server")
+	RedisAuthError         = errors.New("could not auth the redis server")
 )
 
 func Printf(format string, a ...interface{}) (n int, err error) {
