@@ -90,4 +90,10 @@ func InitServer() {
 	if err != nil {
 		log.Fatalln("ListenAndServe error: ", err)
 	}
+	// go func() {
+	// 	err := http.ListenAndServe(":"+conf.MyConfig.Server.Port, nil)
+	// 	if err != nil {
+	// 		log.Fatalln("ListenAndServe error: ", err)
+	// 	}
+	// }()
 }
