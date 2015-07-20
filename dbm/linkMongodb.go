@@ -8,20 +8,21 @@ import (
 
 type mongodbSession struct {
 	Msession *mgo.Session
+	Db       *mgo.Database
 }
 
 var MyMongodb *mongodbSession
 
 func InitMongodb() (mdb *mongodbSession, e error) {
 	if MyMongodb == nil {
-		if ndb, err := NewMongodb(conf.MyConfig.Mongodb.Addr + ":" + conf.MyConfig.Mongodb.Port); err == nil {
+		if ndb, err := NewMongodb(conf.MyConfig.Mongodb.Addr+":"+conf.MyConfig.Mongodb.Port, conf.MyConfig.Mongodb.DbName); err == nil {
 			MyMongodb = ndb
 		}
 	}
 	return MyMongodb, e
 }
 
-func NewMongodb(url string) (mdb *mongodbSession, e error) {
+func NewMongodb(url, db string) (mdb *mongodbSession, e error) {
 	if MyMongodb == nil {
 		session, err := mgo.Dial(url)
 		if err != nil {
@@ -29,6 +30,7 @@ func NewMongodb(url string) (mdb *mongodbSession, e error) {
 		} else {
 			MyMongodb = &mongodbSession{
 				Msession: session,
+				Db:       session.DB(db),
 			}
 			log.Println("connect to mongodb server success")
 		}

@@ -20,9 +20,10 @@ type redisPool struct {
 
 var MyRedisPool *redisPool
 
-// func init() {
-// 	InitRedis()
-// }
+func init() {
+	// InitRedis()
+	DefaultPool()
+}
 
 func NewRedis(server, password string) (myredis *redisConn, e error) {
 	if MyRedis == nil {
@@ -114,4 +115,17 @@ func Close() {
 	} else {
 		log.Println("didn't found redis pool!")
 	}
+}
+
+func Values(reply interface{}, err error) ([]interface{}, error) {
+	return redis.Values(reply, err)
+}
+
+func ScanStruct(src []interface{}, dest interface{}) error {
+	return redis.ScanStruct(src, dest)
+}
+
+func SetHash(id string, val *interface{}) redis.Args {
+	tools.Println("link redis:", val)
+	return redis.Args{}.Add(id).AddFlat(val)
 }
