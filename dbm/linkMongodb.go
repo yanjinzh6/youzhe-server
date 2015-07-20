@@ -3,6 +3,7 @@ package dbm
 import (
 	"github.com/yanjinzh6/youzhe-server/conf"
 	"github.com/yanjinzh6/youzhe-server/log"
+	"github.com/yanjinzh6/youzhe-server/tools"
 	"gopkg.in/mgo.v2"
 )
 
@@ -24,6 +25,7 @@ func InitMongodb() (mdb *mongodbSession, e error) {
 
 func NewMongodb(url, db string) (mdb *mongodbSession, e error) {
 	if MyMongodb == nil {
+		tools.Println(url)
 		session, err := mgo.Dial(url)
 		if err != nil {
 			log.Println("connect to mongodb server error", err)

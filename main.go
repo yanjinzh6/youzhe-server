@@ -5,6 +5,7 @@ import (
 	"github.com/yanjinzh6/youzhe-server/db"
 	"github.com/yanjinzh6/youzhe-server/dbm"
 	"github.com/yanjinzh6/youzhe-server/server"
+	_ "github.com/yanjinzh6/youzhe-server/signal"
 	// "github.com/yanjinzh6/youzhe-server/tools"
 	// "os"
 )
