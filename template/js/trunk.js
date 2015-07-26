@@ -24,16 +24,17 @@ $(function() {
     $('#navToggle').on(clickevent, function(event) {
         event.stopPropagation();
         event.preventDefault();
-        if (content.hasClass('open')) {
+        /*if (content.hasClass('open')) {
             close();
         } else {
             open();
-        }
+        }*/
+        open();
     });
-    content.click(function() {
+    /*content.click(function() {
         if (content.hasClass('open')) {
             close();
         }
-    });
+    });*/
 
 });
