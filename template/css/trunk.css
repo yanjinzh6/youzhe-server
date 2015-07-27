@@ -75,9 +75,10 @@ header h1 {
 }
 
 nav {
-	position: absolute;
-	top: 0;
-	right: 50px;
+	/*position: absolute;*/
+	/*top: 0;*/
+	/*right: 50px;*/
+	/*width: 100%;*/
 }
 
 nav .background {
@@ -112,7 +113,17 @@ nav .user, header .search, nav .menu {
 	display: inline-block;
 }
 
+nav .user, nav .menu {
+	position: absolute;
+	top: 0;
+}
+
+nav .user {
+	right: 80px;
+}
+
 nav .menu {
+	right: 300px;
 	padding: 0 20px;
 }
 
@@ -120,8 +131,8 @@ nav .admin-menu {
 	display: block;
 	position: absolute;
 	top: 80px;
-	left: -77%;
-	width: 100%;
+	left: 0;
+	/*width: 100%;*/
 }
 
 nav .admin-menu li {
