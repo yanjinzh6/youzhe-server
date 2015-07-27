@@ -21,6 +21,23 @@ $(function() {
         $(items).removeClass('open').addClass('close');
     }
 
+    var userMenuBtn = $('nav .user span');
+    var userPanel = $('nav .user, nav .menu, nav .admin-menu');
+    var menu = $('nav .menu');
+    var adminMenu = $('nav .admin-menu');
+
+    function openMenu () {
+        // body...
+        $(userPanel).removeClass('close-menu').addClass('open-menu');
+        // $(menu).removeClass('close-menu').addClass('open-menu');
+        // $(adminMenu).removeClass('close-menu').addClass('open-menu');
+    }
+
+    function closeMenu () {
+        // body...
+        $(userPanel).removeClass('open-menu').addClass('close-menu');
+    }
+
     $('#navToggle').on(clickevent, function(event) {
         event.stopPropagation();
         event.preventDefault();
@@ -31,6 +48,26 @@ $(function() {
         }*/
         open();
     });
+
+    $(userMenuBtn).on(clickevent, null, function(event) {
+        event.stopPropagation();
+        event.preventDefault();
+        /* Act on the event */
+        if (userPanel.hasClass('open-menu')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+
+    $('.background').on(clickevent, null, function(event) {
+        event.stopPropagation();
+        event.preventDefault();
+        /* Act on the event */
+        console.log(event.touches);
+        close();
+    });
+
     /*content.click(function() {
         if (content.hasClass('open')) {
             close();
