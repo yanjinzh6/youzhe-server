@@ -57,6 +57,11 @@ header h1 {
 	display: inline;
 }
 
+header.open-menu, div.content.open-menu {
+	width: 82%;
+	margin-left: 18%;
+}
+
 .burger {
 	position: absolute;
 	float: left;
@@ -127,26 +132,13 @@ nav .menu {
 	padding: 0 20px;
 }
 
-nav .admin-menu {
-	display: block;
-	position: absolute;
-	top: 80px;
-	left: 0;
-	/*width: 100%;*/
-}
-
-nav .admin-menu li {
-	/*float: left;*/
-	display: block;
-	height: 80px;
-}
-
 nav .user {
 	padding: 17px;
 }
-nav .user:hover {
-	background-color: rgba(126, 236, 95, 1);
-	box-shadow: 1px 1px 2px #888888;
+nav .user:hover, nav .user.active {
+	background-color: #145715;
+	box-shadow: 2px 2px 2px #5F5F5F, -2px 0px 2px #4A4A4A;
+	color: #fff;
 	/*border-right: solid 1px #888888;
 	border-bottom: solid 1px #888888;*/
 }
@@ -155,7 +147,7 @@ nav .user img {
 	width: 40px;
 	height: 40px;
 	padding: 5px;
-	border: solid 1px #cccccc;
+	border: solid 1px #BABABA;
 	margin: 0 10px;
 	border-radius: 40px;
 }
@@ -164,11 +156,81 @@ nav .user span {
 	margin: 0 5px;
 }
 
+nav .user span.user-menu {
+	transform: rotateX(0deg);
+}
+nav .user.open-menu span.user-menu {
+	transform: rotateX(180deg);
+}
+nav .user.close-menu span.user-menu {
+	transform: rotateX(0deg);
+}
+
 nav .user .user-info {
-	height: 100px;
-	/*display: none;*/
+	/*height: 100px;*/
+	display: none;
 	margin-top: 10px;
 }
+
+nav .admin-menu {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: -18%;
+	width: 18%;
+	height: 100%;
+	/*min-width: 150px;
+	max-width: 220px;*/
+	z-index: 1;
+	background-color: #1D1D1D;
+	box-shadow: 1px 0px 2px #333832;
+
+	transform: translate3d(0,0,0);
+}
+
+nav .admin-menu.open-menu {
+	transform: translate3d(100%,0,0);
+}
+nav .admin-menu.close-menu {
+	transform: translate3d(0,0,0);
+}
+
+nav .admin-menu .admin-menu-header {
+	display: block;
+	height: 60px;
+	color: #D5D0D0;
+	font-size: 1.3em;
+	/*text-align: center;*/
+	padding: 20px 0 0 50px;
+
+	border-bottom: solid 1px #3F4443;
+	box-shadow: inset 0 5px 0 #164418, inset 0 6px 0 #1A5913;
+}
+
+nav .admin-menu li {
+	/*float: left;*/
+	display: block;
+	height: auto;
+	
+	/*background-color: #333;*/
+	border-bottom: solid 1px #3F4443;
+}
+
+nav .admin-menu li:hover, nav .admin-menu li.active {
+	background-color: #324130;
+	box-shadow: inset 5px 0 0 #24CB24, inset 6px 0 0 #3F4443;
+}
+
+nav .admin-menu li a {
+	position: relative;
+	padding: 25px 0px 25px 50px;
+	color: #D5D0D0;
+}
+
+nav .admin-menu li a:hover, nav .admin-menu li.active a {
+	color: #89FF8F;
+}
+
 header .search {
 	padding: 32px 0;
 	float: right;
@@ -246,7 +308,8 @@ header .search a {
 		max-width: 320px;
 	}
 
-	.background {
+	nav .background {
+		display: block;
 		position: absolute;
 		width: 100%;
 		height: 100%;
@@ -255,7 +318,7 @@ header .search a {
 		opacity: 0;
 	}
 
-	.background span {
+	nav .background span {
 		float: right;
 		color: #ffffff;
 		font-size: 2em;
@@ -274,9 +337,18 @@ header .search a {
 		display: block;
 		float: none;
 	}
+	nav .menu li, nav .admin-menu li {
+		border: none;
+		float: none;
+		box-shadow: none;
+	}
 	nav li:hover {
 		/*color: #fff;*/
 		/*background-color: #121618;*/
+		box-shadow: none;
+	}
+	nav .menu li.active, nav .admin-menu li.active, nav .menu li:hover, nav .admin-menu li:hover {
+		background-color: transparent;
 		box-shadow: none;
 	}
 	nav li a {
@@ -285,11 +357,25 @@ header .search a {
 		letter-spacing: 3px;
 		/*font-size: 1em;*/
 	}
+	nav .menu li a {
+		padding: 20px 0px 20px 40px;
+		color: #121618;
+	}
+	nav .menu li a:hover {
+		color: #121618;
+	}
+	nav .admin-menu li a {
+		padding: 20px 0px 20px 50px;
+		color: #242723;
+	}
+	nav .admin-menu li a:hover {
+		color: #242723;
+	}
 	nav li a.logo {
 		display: none;
 	}
 	nav li a.active {
-		color: #69aa6f;
+		color: #1C6223;
 		/*background-color: #121618;*/
 	}
 	nav .open-menu li a.active {
@@ -304,7 +390,7 @@ header .search a {
 	nav .user {
 		width: 100%;
 		/*max-width: 320px;*/
-		background-color: #389139;
+		background-color: #176C18;
 		padding: 20px 0 10px 0;
 		box-shadow: 1px 1px 1px #5E6B60;
 		position: relative;
@@ -318,7 +404,7 @@ header .search a {
 	}
 	nav .user:hover {
 		/*background-color: transparent;*/
-		background-color: #389139;
+		background-color: #176C18;
 		box-shadow: 1px 1px 1px #5E6B60;
 	}
 	nav .user.open-menu:hover {
@@ -367,6 +453,10 @@ header .search a {
 		/*display: none;*/
 		top: -200%;
 		z-index: 2;
+	}
+
+	nav .admin-menu .admin-menu-header {
+		display: none;
 	}
 
 	nav .admin-menu, nav .admin-menu.close-menu {

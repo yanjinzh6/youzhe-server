@@ -21,7 +21,7 @@ $(function() {
         $(items).removeClass('open').addClass('close');
     }
 
-    var userMenuBtn = $('nav .user span');
+    var userMenuBtn = mobilecheck() ? $('nav .user span') : $('nav .user');
     var userPanel = $('nav .user, nav .menu, nav .admin-menu');
     var menu = $('nav .menu');
     var adminMenu = $('nav .admin-menu');
@@ -29,6 +29,8 @@ $(function() {
     function openMenu () {
         // body...
         $(userPanel).removeClass('close-menu').addClass('open-menu');
+        $(items).removeClass('close-menu').addClass('open-menu');
+        $(content).removeClass('close-menu').addClass('open-menu');
         // $(menu).removeClass('close-menu').addClass('open-menu');
         // $(adminMenu).removeClass('close-menu').addClass('open-menu');
     }
@@ -36,6 +38,8 @@ $(function() {
     function closeMenu () {
         // body...
         $(userPanel).removeClass('open-menu').addClass('close-menu');
+        $(items).removeClass('open-menu').addClass('close-menu');
+        $(content).removeClass('open-menu').addClass('close-menu');
     }
 
     $('#navToggle').on(clickevent, function(event) {
@@ -55,8 +59,10 @@ $(function() {
         /* Act on the event */
         if (userPanel.hasClass('open-menu')) {
             closeMenu();
+            $(this).removeClass('active');
         } else {
             openMenu();
+            $(this).addClass('active');
         }
     });
 
