@@ -11,6 +11,7 @@ type Config struct {
 	Server  serverConfig
 	Redis   dbConfig
 	Mongodb dbConfig
+	Email   emailConfig
 }
 
 type serverConfig struct {
@@ -31,6 +32,12 @@ type dbConfig struct {
 	User     string
 	Password string
 	DbName   string
+}
+
+type emailConfig struct {
+	UserName string
+	Password string
+	Host     string
 }
 
 var MyConfig *Config
@@ -64,6 +71,7 @@ func InitConfig(filePath string) (conf *Config) {
 				Server:  serverConfig{Addr: "127.0.0.1", Port: "3333", Ports: "1443", HandlerList: []handlerItem{handlerItem{Action: "/index", MyFunc: "/index/Index"}}},
 				Redis:   dbConfig{Addr: "127.0.0.1", Port: "6379", User: "", Password: "", DbName: ""},
 				Mongodb: dbConfig{Addr: "127.0.0.1", Port: "27017", User: "", Password: "", DbName: "yozh"},
+				Email:   emailConfig{UserName: "", Password: "", Host: ""},
 			}
 			//tools.Println(MyConfig)
 			writer := bufio.NewWriterSize(file, tools.DEFAULT_BUFFER_SIZE)
