@@ -266,6 +266,10 @@ header .search a {
 		transform: translate3d(0,0,0);
 		
 	}
+	header.open-menu, div.content.open-menu {
+		width: 100%;
+		margin-left: 0;
+	}
 	header h1 {
 		color: #2e3233;
 		line-height: 60px;

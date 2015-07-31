@@ -57,6 +57,7 @@ $(function() {
         event.stopPropagation();
         event.preventDefault();
         /* Act on the event */
+        console.log(event);
         if (userPanel.hasClass('open-menu')) {
             closeMenu();
             $(this).removeClass('active');
@@ -66,12 +67,19 @@ $(function() {
         }
     });
 
-    $('.background').on(clickevent, null, function(event) {
+    $('nav .background').on(clickevent, null, function(event) {
         event.stopPropagation();
         event.preventDefault();
         /* Act on the event */
-        console.log(event.touches);
+        console.log(event);
         close();
+    });
+
+    //add this item, nav .background event will be normal.
+    $('body').on(clickevent, null, function(event) {
+        event.preventDefault();
+        /* Act on the event */
+        console.log(event);
     });
 
     /*content.click(function() {
