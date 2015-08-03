@@ -37,20 +37,23 @@
             <!-- <div ng-include="views/header.html" ng-controller="HeaderController"></div> -->
             <div ng-controller="HeaderController">
                 <header ng-class="{'slide': true, 'open': slide.isOpen}">
-                    <div ng-class="{'burger': true, 'slide': true, 'open': slide.isOpen}" ng-click="slide.openSlide()">
+                    <div ng-class="{'burger': true, 'open': slide.isOpen}" ng-click="slide.openSlide()">
                         <span class="icon-menu"></span>
                     </div>
                     <h1>YOZH</h1>
                     <div class="search"><a href=""><span class="icon-search"></span></a></div>
                 </header>
                 <nav ng-class="{'slide': true, 'open': slide.isOpen}">
-                    <div class="background" ng-click="closeSlide()"><span class="icon-cancel-circle"></span></div>
-                    <div class="left-slide">
+                    <div class="background" ng-click="slide.closeSlide()"><span class="icon-cancel-circle"></span></div>
+                    <div ng-class="{'left-slide': true, 'open-menu': adminMenu.isOpen}">
                         <div class="user">
-                            <img src="img/60x60.jpg" alt=""><span class="user-panel" ng-click="adminMenu.changeMenu()">用户名</span><span class="icon-circle-down user-menu" ng-click="adminMenu.changeMenu()"></span>
+                            <img src="img/60x60.jpg" alt="">
+                            <div class="user-panel" ng-click="adminMenu.changeMenu()">
+                                <span>用户名</span><span class="icon-circle-down" ng-click="adminMenu.changeMenu()"></span>
+                            </div>
                             <div class="user-info"></div>
                         </div>
-                        <div ng-class="{'menu': true, 'open-menu': adminMenu.isOpen}">
+                        <div ng-class="{'menu': true}">
                             <ul>
                                 <li><a href="#" class="active"><span class="icon-home"></span>首页</a></li>
                                 <li><a href="#"><span class="icon-flag"></span>菜单1</a></li>
@@ -58,7 +61,7 @@
                                 <li><a href="#"><span class="icon-bookmarks"></span>菜单3</a></li>
                             </ul>
                         </div>
-                        <div ng-class="{'admin-menu': true, 'open-menu': adminMenu.isOpen}">
+                        <div ng-class="{'admin-menu': true}">
                             <div class="admin-menu-header"><span class="icon-equalizer2"></span>控制面板</div>
                             <ul>
                                 <li><a href="#" class="active"><span class="icon-cog"></span>管理面板</a></li>
@@ -108,7 +111,7 @@
             <div class="menu-backgroud">
                 <span class="icon-cancel-circle"></span>
             </div>
-            <div class="content slide">
+            <div class="content">
                 <div class="mainpage"></div>
             </div>
         </div>

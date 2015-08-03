@@ -1,0 +1,149 @@
+@header-height: 80px;
+@header-color: #ffffff;
+@logo-color: #9aa6af;
+@menu-color: #2e3233;
+.backface-visibility(@type: hidden) {
+	-webkit-backface-visibility: @type;
+	-moz-backface-visibility: @type;
+	-ms-backface-visibility: @type;
+	-o-backface-visibility: @type;
+	backface-visibility: @type;
+}
+.box-shadow(@hs: 2px, @vs: 2px, @blur: 2px, @spread, @color, @inset) {
+	-webkit-box-shadow: @arguments;
+	-moz-box-shadow: @arguments;
+	-ms-box-shadow: @arguments;
+	-o-box-shadow: @arguments;
+	box-shadow: @arguments;
+}
+.border-radius(@radius: 4px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	-ms-border-radius: @radius;
+	-o-border-radius: @radius;
+	border-radius: @radius;
+}
+.border(@fs: solid, @size: 1px, @color: #000000) {
+	border: @arguments;
+}
+
+body {
+	text-rendering: optimizelegibility;
+	tap-highlight-color:rgba(0,0,0,0); 
+	text-size-adjust: none;
+	font-smoothing: antialiased;
+}
+
+.container {
+	overflow: hidden;
+	background-color: #000;
+	/*Prevents Flickering*/
+	.backface-visibility(hidden);
+}
+
+header {
+	position: relative;
+	height: @header-height;
+	background-color: @header-color;
+	.box-shadow(0px, 2px, 2px, 1px, #cccccc);
+
+	.burger {
+		position: absolute;
+		top: 4px;
+		left: 10px;
+		float: left;
+		padding: 10px;
+		display: none;
+
+		span {
+			color: #F0F0F0;
+			font-size: 2em;
+		}
+	}
+
+	h1 {
+		display: inline;
+		padding-left: 20px;
+		color: @logo-color;
+		line-height: @header-height;
+		text-align: left;
+		font-size: 2em;
+		font-weight: bold;
+	}
+
+	.search {
+		float: right;
+		padding: 32px 0;
+
+		a {
+			color: #2e3233;
+			font-size: 1em;
+			padding: 32px 15px;
+		}
+	}
+}
+
+nav {
+	.background {
+		display: none;
+	}
+	.left-slide {
+		.user {
+			right: 80px;
+			padding: 17px;
+			
+			img {
+				width: 40px;
+				height: 40px;
+				padding: 5px;
+				margin: 0 10px;
+				.border(solid, 1px, #BABABA);
+				.border-radius(40px);
+			}
+			.user-panel {
+				span {
+
+				}
+			}
+			.user-info {
+
+			}
+		}
+		.menu {
+			right: 300px;
+			padding: 0 20px;
+			ul {
+				li {
+
+				}
+			}
+		}
+		.admin-menu {
+			.admin-menu-header {
+
+			}
+			ul {
+				li {
+					
+				}
+			}
+		}
+		ul {
+			li {
+				display: inline-block;
+				height: @header-height;
+
+				a {
+					display: block;
+					padding: 32px 15px;
+					font-size: 1em;
+					color: @menu-color;
+
+					span {
+						margin-right: 5px;
+					}
+				}
+			}
+		}
+	}
+}
