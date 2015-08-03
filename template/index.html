@@ -1,5 +1,8 @@
-<!doctype html>
-<html class="no-js" lang="">
+<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="en" ng-app="yozh" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html lang="en" ng-app="yozh" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html lang="en" ng-app="yozh" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="yozh" class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -21,6 +24,7 @@
         <!--[if lt IE 8]>
             <link rel="stylesheet" href="css/icomoon-ie7.css">
         <![endif]-->
+        <script src="js/vendor/angular.js"></script>
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
@@ -30,12 +34,44 @@
 
         <!-- Add your site or application content here -->
         <div class="container">
-            <header class="slide">
-                <!-- <ul id="navToggle" class="burger slide">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul> -->
+            <!-- <div ng-include="views/header.html" ng-controller="HeaderController"></div> -->
+            <div ng-controller="HeaderController">
+                <header ng-class="{'slide': true, 'open': slide.isOpen}">
+                    <div ng-class="{'burger': true, 'slide': true, 'open': slide.isOpen}" ng-click="slide.openSlide()">
+                        <span class="icon-menu"></span>
+                    </div>
+                    <h1>YOZH</h1>
+                    <div class="search"><a href=""><span class="icon-search"></span></a></div>
+                </header>
+                <nav ng-class="{'slide': true, 'open': slide.isOpen}">
+                    <div class="background" ng-click="closeSlide()"><span class="icon-cancel-circle"></span></div>
+                    <div class="left-slide">
+                        <div class="user">
+                            <img src="img/60x60.jpg" alt=""><span class="user-panel" ng-click="adminMenu.changeMenu()">用户名</span><span class="icon-circle-down user-menu" ng-click="adminMenu.changeMenu()"></span>
+                            <div class="user-info"></div>
+                        </div>
+                        <div ng-class="{'menu': true, 'open-menu': adminMenu.isOpen}">
+                            <ul>
+                                <li><a href="#" class="active"><span class="icon-home"></span>首页</a></li>
+                                <li><a href="#"><span class="icon-flag"></span>菜单1</a></li>
+                                <li><a href="#"><span class="icon-earth"></span>菜单2</a></li>
+                                <li><a href="#"><span class="icon-bookmarks"></span>菜单3</a></li>
+                            </ul>
+                        </div>
+                        <div ng-class="{'admin-menu': true, 'open-menu': adminMenu.isOpen}">
+                            <div class="admin-menu-header"><span class="icon-equalizer2"></span>控制面板</div>
+                            <ul>
+                                <li><a href="#" class="active"><span class="icon-cog"></span>管理面板</a></li>
+                                <li><a href="#"><span class="icon-flag"></span>管理菜单1</a></li>
+                                <li><a href="#"><span class="icon-pie-chart"></span>管理菜单2</a></li>
+                                <li><a href="#"><span class="icon-users"></span>管理菜单3</a></li>
+                                <li><a href="#"><span class="icon-clipboard"></span>管理菜单4</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <!-- <header class="slide">
                 <div id="navToggle" class="burger slide">
                     <span class="icon-menu"></span>
                 </div>
@@ -68,7 +104,7 @@
                         </ul>
                     </div>
                 </div>
-            </nav>
+            </nav> -->
             <div class="menu-backgroud">
                 <span class="icon-cancel-circle"></span>
             </div>
@@ -77,11 +113,14 @@
             </div>
         </div>
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script> -->
-        <script src="js/vendor/jquery-1.11.3.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+        <script src="js/vendor/jquery-1.11.3.js"></script> -->
+        <script src="js/vendor/angular-route.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
-        <script src="js/trunk.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/controllers/HeaderController.js"></script>
+        <!-- <script src="js/trunk.js"></script> -->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <!-- <script>
