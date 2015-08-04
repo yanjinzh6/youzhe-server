@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="css/grids.css">
         <link rel="stylesheet" href="css/grids-responsive.css">
         <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/trunk.css">
+        <link rel="stylesheet" href="less/slide-menu.css">
         <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" href="css/icomoon.css">
         <!--[if lt IE 8]>
@@ -33,47 +33,45 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <div class="container">
+        <div ng-class="{'container': true, 'open': slide.isOpen, 'open-menu': adminMenu.isOpen}" ng-controller="HeaderController">
             <!-- <div ng-include="views/header.html" ng-controller="HeaderController"></div> -->
-            <div ng-controller="HeaderController">
-                <header ng-class="{'slide': true, 'open': slide.isOpen}">
-                    <div ng-class="{'burger': true, 'open': slide.isOpen}" ng-click="slide.openSlide()">
-                        <span class="icon-menu"></span>
+            <header>
+                <div class="burger" ng-click="slide.openSlide()">
+                    <span class="icon-menu"></span>
+                </div>
+                <a class="logo"><h1>YOZH</h1></a>
+                <a href="" class="search"><span class="icon-search"></span></a>
+            </header>
+            <nav>
+                <div class="background" ng-click="slide.closeSlide()"><span class="icon-cancel-circle"></span></div>
+                <div class="left-slide">
+                    <div class="user">
+                        <img src="img/60x60.jpg" alt="">
+                        <div class="user-panel" ng-click="adminMenu.changeMenu()">
+                            <span>用户名</span><span class="icon-circle-down user-burger"></span>
+                        </div>
+                        <div class="user-info"></div>
                     </div>
-                    <h1>YOZH</h1>
-                    <div class="search"><a href=""><span class="icon-search"></span></a></div>
-                </header>
-                <nav ng-class="{'slide': true, 'open': slide.isOpen}">
-                    <div class="background" ng-click="slide.closeSlide()"><span class="icon-cancel-circle"></span></div>
-                    <div ng-class="{'left-slide': true, 'open-menu': adminMenu.isOpen}">
-                        <div class="user">
-                            <img src="img/60x60.jpg" alt="">
-                            <div class="user-panel" ng-click="adminMenu.changeMenu()">
-                                <span>用户名</span><span class="icon-circle-down" ng-click="adminMenu.changeMenu()"></span>
-                            </div>
-                            <div class="user-info"></div>
-                        </div>
-                        <div ng-class="{'menu': true}">
-                            <ul>
-                                <li><a href="#" class="active"><span class="icon-home"></span>首页</a></li>
-                                <li><a href="#"><span class="icon-flag"></span>菜单1</a></li>
-                                <li><a href="#"><span class="icon-earth"></span>菜单2</a></li>
-                                <li><a href="#"><span class="icon-bookmarks"></span>菜单3</a></li>
-                            </ul>
-                        </div>
-                        <div ng-class="{'admin-menu': true}">
-                            <div class="admin-menu-header"><span class="icon-equalizer2"></span>控制面板</div>
-                            <ul>
-                                <li><a href="#" class="active"><span class="icon-cog"></span>管理面板</a></li>
-                                <li><a href="#"><span class="icon-flag"></span>管理菜单1</a></li>
-                                <li><a href="#"><span class="icon-pie-chart"></span>管理菜单2</a></li>
-                                <li><a href="#"><span class="icon-users"></span>管理菜单3</a></li>
-                                <li><a href="#"><span class="icon-clipboard"></span>管理菜单4</a></li>
-                            </ul>
-                        </div>
+                    <div class="menu">
+                        <ul>
+                            <li><a href="#" class="active"><span class="icon-home"></span>首页</a></li>
+                            <li><a href="#"><span class="icon-flag"></span>菜单1</a></li>
+                            <li><a href="#"><span class="icon-earth"></span>菜单2</a></li>
+                            <li><a href="#"><span class="icon-bookmarks"></span>菜单3</a></li>
+                        </ul>
                     </div>
-                </nav>
-            </div>
+                    <div class="admin-menu">
+                        <div class="admin-menu-header"><span class="icon-equalizer2"></span>控制面板</div>
+                        <ul>
+                            <li><a href="#" class="active"><span class="icon-cog"></span>管理面板</a></li>
+                            <li><a href="#"><span class="icon-flag"></span>管理菜单1</a></li>
+                            <li><a href="#"><span class="icon-pie-chart"></span>管理菜单2</a></li>
+                            <li><a href="#"><span class="icon-users"></span>管理菜单3</a></li>
+                            <li><a href="#"><span class="icon-clipboard"></span>管理菜单4</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
             <!-- <header class="slide">
                 <div id="navToggle" class="burger slide">
                     <span class="icon-menu"></span>
@@ -108,9 +106,6 @@
                     </div>
                 </div>
             </nav> -->
-            <div class="menu-backgroud">
-                <span class="icon-cancel-circle"></span>
-            </div>
             <div class="content">
                 <div class="mainpage"></div>
             </div>

@@ -17,6 +17,7 @@ func InitServer() {
 	http.Handle("/img/", http.FileServer(http.Dir("template")))
 	http.Handle("/fonts/", http.FileServer(http.Dir("template")))
 	http.Handle("/views/", http.FileServer(http.Dir("template")))
+	http.Handle("/less/", http.FileServer(http.Dir("template")))
 	//config := conf.InitConfig(tools.DEFAULT_CONFIG_FILE)
 	in := make([]reflect.Value, 2)
 	//http.HandleFunc(config.Server.HandlerList[0].Action, config.Server.HandlerList[0].MyFunc)
