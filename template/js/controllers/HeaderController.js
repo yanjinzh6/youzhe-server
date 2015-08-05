@@ -8,7 +8,7 @@
 angular.module('yozh.controllers', []).
 
 controller('HeaderController', ['$scope', function($scope){
-	console.log($scope);
+	// console.log($scope);
 	// $scope.name = 'header';
 	$scope.slide = {};
 	$scope.adminMenu = {};
