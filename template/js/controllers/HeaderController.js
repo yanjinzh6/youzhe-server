@@ -1,11 +1,11 @@
 'use strict';
 
 /**
-* yozh.header Module
+* yozh.controllers Module
 *
 * Description
 */
-angular.module('yozh.header', []).
+angular.module('yozh.controllers', []).
 
 controller('HeaderController', ['$scope', function($scope){
 	console.log($scope);

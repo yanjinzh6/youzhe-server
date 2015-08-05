@@ -5,9 +5,11 @@
 *
 * Description
 */
-angular.module('yozh', ['ngRoute', 'yozh.header']).
+angular.module('yozh', ['ngRoute', 'yozh.services', 'yozh.controllers']).
 
-config(['$routeProvider', function($routeProvider) {
-	console.log($routeProvider);
+config(['$routeProvider', '$interpolateProvider', function($routeProvider, $interpolateProvider) {
+	// console.log($routeProvider);
 	// $routeProvider.otherwise({redirectTo: '/'});
+	$interpolateProvider.startSymbol('[[');
+	$interpolateProvider.endSymbol(']]');
 }]);

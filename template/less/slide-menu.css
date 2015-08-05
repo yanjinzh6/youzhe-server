@@ -261,7 +261,7 @@ a {
     box-shadow: 1px 1px 1px #5E6B60;
   }
   .container.open-menu nav .left-slide .menu {
-    top: 0;
+    top: 100%;
   }
   .container.open-menu nav .left-slide .admin-menu {
     top: -100%;
