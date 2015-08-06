@@ -59,23 +59,15 @@
                         <div class="user-info"></div>
                     </div>
                     <div class="menu">
-                        <ul>
-                            <li><a href="#" class="active"><span class="icon-home"></span>首页</a></li>
-                            <li><a href="#"><span class="icon-flag"></span>菜单1</a></li>
-                            <li><a href="#"><span class="icon-earth"></span>菜单2</a></li>
-                            <li><a href="#"><span class="icon-bookmarks"></span>菜单3</a></li>
+                        <ul common-menu n-menus="userMenus">
+                            <div menu-item ng-repeat="menu in userMenus"></div>
                         </ul>
                     </div>
                     <div class="admin-menu">
                         <div class="admin-menu-header"><span class="icon-equalizer2"></span>控制面板</div>
-                        <div admin-menu></div>
-                        <!-- <ul>
-                            <li><a href="#" class="active"><span class="icon-cog"></span>管理面板</a></li>
-                            <li><a href="#"><span class="icon-flag"></span>管理菜单1</a></li>
-                            <li><a href="#"><span class="icon-pie-chart"></span>管理菜单2</a></li>
-                            <li><a href="#"><span class="icon-users"></span>管理菜单3</a></li>
-                            <li><a href="#"><span class="icon-clipboard"></span>管理菜单4</a></li>
-                        </ul> -->
+                        <ul common-menu n-menus="adminMenus">
+                            <div menu-item ng-repeat="menu in adminMenus"></div>
+                        </ul>
                     </div>
                 </div>
             </nav>
@@ -129,7 +121,7 @@
         <script src="js/controllers/loginController.js"></script>
         <script src="js/controllers/sessionController.js"></script>
         <script src="js/controllers/homeController.js"></script>
-        <script src="js/directives/adminMenu.js"></script>
+        <script src="js/directives/menu.js"></script>
         <!-- <script src="js/trunk.js"></script> -->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

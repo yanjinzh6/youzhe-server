@@ -19,5 +19,9 @@ config(['$routeProvider', '$interpolateProvider', function($routeProvider, $inte
 		controller: 'LoginController',
 		templateUrl: '../views/login.html'
 	});
+	$routeProvider.when('/menu/:item', {
+		controller: 'SessionController',
+		template: '[[menuItem]]'
+	});
 	$routeProvider.otherwise({redirectTo: '/'});
 }]);
