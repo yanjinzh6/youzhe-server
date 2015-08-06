@@ -103,6 +103,9 @@ a {
   font-size: 2em;
   font-weight: bold;
 }
+.container header .header-title {
+  display: none;
+}
 .container header .search {
   display: inline-block;
   float: right;

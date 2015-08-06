@@ -24,7 +24,7 @@ directive('adminMenu', function(){
 		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
 		link: function($scope, iElm, iAttrs, controller) {
 			console.log($scope, iElm, iAttrs, controller);
-			$scope.menus = [{name: '管理菜单1', ico: 'icon-flag', href: '/###'}, {name: '管理菜单2', ico: 'icon-flag', href: '/###'}, {name: '管理菜单3', ico: 'icon-flag', href: '/###'}, {name: '管理菜单4', ico: 'icon-flag', href: '/###'}, {name: '管理菜单5', ico: 'icon-flag', href: '/###'}];
+			
 		}
 	};
 });
