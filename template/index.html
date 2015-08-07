@@ -27,7 +27,7 @@
         <script src="js/vendor/angular.js"></script>
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
-    <body ng-controller="SessionController">
+    <body ng-controller="SessionController as sessionCtrl">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -48,25 +48,16 @@
             <nav>
                 <div class="background" ng-click="slide.closeSlide()"><span class="icon-cancel-circle"></span></div>
                 <div class="left-slide">
-                    <div class="user">
-                        <img src="img/60x60.jpg" alt="">
-                        <div ng-if="curUser.userName != null" class="user-panel" ng-click="adminMenu.changeMenu()">
-                            <span>[[curUser.userName]]</span><span class="icon-circle-down user-burger"></span>
-                        </div>
-                        <div ng-if="curUser.userName == null" class="user-panel" ng-click="showLogin()">
-                            <span>未登录</span><span class="icon-circle-down user-burger"></span>
-                        </div>
-                        <div class="user-info"></div>
-                    </div>
+                    <div user-info></div>
                     <div class="menu">
-                        <ul common-menu n-menus="userMenus">
-                            <div menu-item ng-repeat="menu in userMenus"></div>
+                        <ul>
+                            <div menu-item ng-repeat="menu in sessionCtrl.curUser.userMenus"></div>
                         </ul>
                     </div>
                     <div class="admin-menu">
                         <div class="admin-menu-header"><span class="icon-equalizer2"></span>控制面板</div>
-                        <ul common-menu n-menus="adminMenus">
-                            <div menu-item ng-repeat="menu in adminMenus"></div>
+                        <ul>
+                            <div menu-item ng-repeat="menu in sessionCtrl.curUser.adminMenus"></div>
                         </ul>
                     </div>
                 </div>
@@ -122,6 +113,7 @@
         <script src="js/controllers/sessionController.js"></script>
         <script src="js/controllers/homeController.js"></script>
         <script src="js/directives/commonMenu.js"></script>
+        <script src="js/directives/userInfo.js"></script>
         <!-- <script src="js/trunk.js"></script> -->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
