@@ -39,8 +39,8 @@ func (i *Obje) Login(w http.ResponseWriter, r *http.Request) {
 }
 
 func (i *Obje) Demo(w http.ResponseWriter, r *http.Request) {
-	tools.Println(w.Header(), r.Host)
 	params := r.URL.Query()
 	id := params.Get(":id")
-	fmt.Fprintf(w, "{'id': %s}", id)
+	fmt.Printf("{id: %s}", id)
+	fmt.Fprintf(w, "%s", id)
 }

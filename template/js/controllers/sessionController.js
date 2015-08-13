@@ -10,7 +10,7 @@ angular.module('yozh.controllers').
 controller('SessionController', ['$routeParams', '$location', 'sessionService', function($routeParams, $location, sessionService){
 	var vm = this;
 	// console.log($routeParams.item);
-	// vm.menuItem = $routeParams.item;
+	vm.menuItem = $routeParams.item;
 	vm.curMenu = '菜单1';
 	vm.curUser = angular.fromJson(sessionService.getItem('user'));
 	console.log(vm.curUser);
