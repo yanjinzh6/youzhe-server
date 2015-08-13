@@ -7,10 +7,13 @@
 */
 angular.module('yozh', ['ngRoute', 'yozh.services', 'yozh.directives', 'yozh.controllers']).
 
-config(['$routeProvider', '$interpolateProvider', function($routeProvider, $interpolateProvider) {
+config(['$routeProvider', '$interpolateProvider', '$httpProvider', function($routeProvider, $interpolateProvider, $httpProvider) {
 	// console.log($routeProvider);
 	$interpolateProvider.startSymbol('[[');
 	$interpolateProvider.endSymbol(']]');
+
+	$httpProvider.interceptors.push('testInterceptor');
+
 	$routeProvider.when('/', {
 		controller: 'HomeController',
 		templateUrl: '../views/home.html'
@@ -20,8 +23,8 @@ config(['$routeProvider', '$interpolateProvider', function($routeProvider, $inte
 		templateUrl: '../views/login.html'
 	});
 	$routeProvider.when('/menu/:item', {
-		controller: 'SessionController',
-		template: '[[menuItem]]'
+		controller: 'SessionController as sessionCtrl',
+		template: '[[sessionCtrl.menuItem]]'
 	});
 	$routeProvider.otherwise({redirectTo: '/'});
 }]);
