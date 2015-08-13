@@ -5,7 +5,7 @@
 *
 * Description
 */
-angular.module('yozh', ['ngRoute', 'yozh.services', 'yozh.directives', 'yozh.controllers']).
+angular.module('yozh', ['ngRoute', 'ngResource', 'yozh.services', 'yozh.directives', 'yozh.controllers']).
 
 config(['$routeProvider', '$interpolateProvider', '$httpProvider', function($routeProvider, $interpolateProvider, $httpProvider) {
 	// console.log($routeProvider);
