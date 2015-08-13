@@ -24,6 +24,7 @@ type serverConfig struct {
 type handlerItem struct {
 	Action string
 	MyFunc string
+	Method string
 }
 
 type dbConfig struct {
@@ -68,7 +69,7 @@ func InitConfig(filePath string) (conf *Config) {
 		if bufs.Len() == 0 {
 			//nothing
 			MyConfig = &Config{
-				Server:  serverConfig{Addr: "127.0.0.1", Port: "3333", Ports: "1443", HandlerList: []handlerItem{handlerItem{Action: "/index", MyFunc: "/index/Index"}}},
+				Server:  serverConfig{Addr: "127.0.0.1", Port: "3333", Ports: "1443", HandlerList: []handlerItem{handlerItem{Action: "/index", MyFunc: "/index/Index", Method: "GET"}}},
 				Redis:   dbConfig{Addr: "127.0.0.1", Port: "6379", User: "", Password: "", DbName: ""},
 				Mongodb: dbConfig{Addr: "127.0.0.1", Port: "27017", User: "", Password: "", DbName: "yozh"},
 				Email:   emailConfig{UserName: "", Password: "", Host: ""},

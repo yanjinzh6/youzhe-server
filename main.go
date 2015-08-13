@@ -13,7 +13,8 @@ import (
 func main() {
 	dbm.InitMongodb()
 	db.InitRedis()
-	server.InitServer()
+	// server.InitServer()
+	server.Create()
 
 	defer db.Close()
 	defer dbm.Close()

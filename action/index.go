@@ -1,6 +1,7 @@
 package action
 
 import (
+	"fmt"
 	"github.com/yanjinzh6/youzhe-server/tools"
 	"html/template"
 	"net/http"
@@ -39,4 +40,7 @@ func (i *Obje) Login(w http.ResponseWriter, r *http.Request) {
 
 func (i *Obje) Demo(w http.ResponseWriter, r *http.Request) {
 	tools.Println(w.Header(), r.Host)
+	params := r.URL.Query()
+	id := params.Get(":id")
+	fmt.Fprintf(w, "{'id': %s}", id)
 }
