@@ -22,6 +22,10 @@ config(['$routeProvider', '$interpolateProvider', '$httpProvider', function($rou
 		controller: 'LoginController',
 		templateUrl: '../views/login.html'
 	});
+	$routeProvider.when('/register', {
+		controller: 'LoginController',
+		templateUrl: '../views/register.html'
+	});
 	$routeProvider.when('/menu/:item', {
 		controller: 'SessionController as sessionCtrl',
 		template: '[[sessionCtrl.menuItem]]'

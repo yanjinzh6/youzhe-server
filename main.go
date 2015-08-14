@@ -11,8 +11,8 @@ import (
 )
 
 func main() {
-	// dbm.InitMongodb()
-	// db.InitRedis()
+	dbm.InitMongodb()
+	db.InitRedis()
 	// server.InitServer()
 	server.Create()
 

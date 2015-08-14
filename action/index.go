@@ -8,7 +8,13 @@ import (
 )
 
 type Obje struct {
-	name string
+	name           string
+	collectionName string
+}
+
+type RespState struct {
+	State   string
+	Content interface{}
 }
 
 func init() {

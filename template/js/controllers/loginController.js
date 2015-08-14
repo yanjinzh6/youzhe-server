@@ -7,7 +7,7 @@
 */
 angular.module('yozh.controllers').
 
-controller('LoginController', ['$scope', 'sessionService', function($scope, sessionService){
+controller('LoginController', ['$scope', 'sessionService', 'authService', function($scope, sessionService, authService){
 	$scope.user = {};
 	$scope.login = function() {
 		console.log($scope);
@@ -22,5 +22,10 @@ controller('LoginController', ['$scope', 'sessionService', function($scope, sess
 	$scope.logout = function() {
 		$scope.sessionCtrl.curUser.islogin = false;
 		sessionService.setItem('user', angular.toJson($scope.sessionCtrl.curUser));
+	}
+	$scope.register = function() {
+		var auth = authService;
+		console.log($scope.user)
+		// auth.register()
 	}
 }]);

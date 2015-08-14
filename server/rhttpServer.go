@@ -7,6 +7,7 @@ import (
 	"github.com/yanjinzh6/youzhe-server/log"
 	"github.com/yanjinzh6/youzhe-server/tools"
 	"net/http"
+	// "os"
 	"reflect"
 	"strings"
 )
@@ -33,6 +34,16 @@ func muxConfig() *routes.RouteMux {
 	mux.Static("/fonts/", "template")
 	mux.Static("/views/", "template")
 	mux.Static("/less/", "template")
+	mux.Static("/favicon.ico", "template")
+	mux.Static("/apple-touch-icon.png", "template")
+	mux.Static("/tile.png", "template")
+	mux.Static("/tile-wide.png", "template")
+	mux.Static("/browserconfig.xml", "template")
+	mux.Static("/crossdomain.xml", "template")
+	mux.Static("/humans.txt", "template")
+	mux.Static("/LICENSE.txt", "template")
+	mux.Static("/robots.txt", "template")
+	// mux.Static("/", "template")
 	in := make([]reflect.Value, 2)
 	//http.HandleFunc(config.Server.HandlerList[0].Action, config.Server.HandlerList[0].MyFunc)
 	for _, ht := range conf.MyConfig.Server.HandlerList {
@@ -59,6 +70,7 @@ func muxConfig() *routes.RouteMux {
 				}
 			}
 			mux.AddRoute(ht.Method, ht.Action, handler)
+			tools.Println("addroute:", ht.Method, ht.Action, med)
 		} else {
 			tools.Println(err)
 		}

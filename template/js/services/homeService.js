@@ -11,7 +11,7 @@ factory('homeService', ['$http', function($http){
 		queryInfo: function() {
 			return $http({
 				method: 'GET',
-				url: '/test/123'
+				url: '/users/123'
 			});
 		}
 	};
