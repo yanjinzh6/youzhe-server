@@ -8772,7 +8772,9 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
   padding: 4px 0;
   width: 100%;
   text-align: left;
-  color: inherit; }
+  color: inherit;
+  /*background-color: transparent; */
+  background: 0 0; }
   .mdl-textfield.is-focused .mdl-textfield__input {
     outline: none; }
   .mdl-textfield.is-invalid .mdl-textfield__input {
