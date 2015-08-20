@@ -26,7 +26,7 @@ func init() {
 
 func (i *Obje) Index(w http.ResponseWriter, r *http.Request) {
 	//http.Redirect(w, r, "template/index.html", http.StatusFound)
-	t, err := template.ParseFiles("template/index.html")
+	t, err := template.ParseFiles("template/mdlindex.html")
 	if err != nil {
 		tools.Println(err)
 	} else {
