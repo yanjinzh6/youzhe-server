@@ -13,61 +13,123 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 
-        <link rel="stylesheet" href="css/normalize.css">
+        <!-- <link rel="stylesheet" href="css/normalize.css"> -->
         <link rel="stylesheet" href="css/material.css">
         <!-- <link rel="stylesheet" href="css/icomoon.css"> -->
         <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet"> -->
         <link href="css/roboto.css" rel="stylesheet">
         <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
         <link href="css/material-icon.css" rel="stylesheet">
+        <link rel="stylesheet" href="less/style.css">
         <!-- <script src="js/vendor/angular.js"></script> -->
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
         <!-- Uses a header that contracts as the page scrolls down. -->
-        <div class="demo-layout-waterfall mdl-layout mdl-js-layout">
-            <header class="mdl-layout__header mdl-layout__header--waterfall">
+        <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+            <header class="demo-header mdl-layout__header mdl-color--green-500 mdl-color-text--grey-100">
                 <!-- Top row, always visible -->
                 <div class="mdl-layout__header-row">
                     <!-- Title -->
                     <span class="mdl-layout-title">Title</span>
                     <div class="mdl-layout-spacer"></div>
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                    mdl-textfield--floating-label mdl-textfield--align-right">
-                        <label class="mdl-button mdl-js-button mdl-button--icon"
-                            for="waterfall-exp">
+                    <nav class="demo-navigation mdl-navigation mdl-layout--large-screen-only">
+                        <a class="mdl-navigation__link mdl-color-text--grey-200" href=""><i class="mdl-color-text--grey-300 material-icons" role="presentation">home</i>Home</a>
+                        <a class="mdl-navigation__link mdl-color-text--grey-200" href=""><i class="mdl-color-text--grey-300 material-icons" role="presentation">inbox</i>Inbox</a>
+                        <a class="mdl-navigation__link mdl-color-text--grey-200" href=""><i class="mdl-color-text--grey-300 material-icons" role="presentation">delete</i>Trash</a>
+                        <a class="mdl-navigation__link mdl-color-text--grey-200" href=""><i class="mdl-color-text--grey-300 material-icons" role="presentation">report</i>Spam</a>
+                    </nav>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+                        <label class="mdl-button mdl-js-button mdl-button--icon" for="waterfall-exp">
                             <i class="material-icons">search</i>
                         </label>
                         <div class="mdl-textfield__expandable-holder">
-                            <input class="mdl-textfield__input" type="text" name="sample"
-                            id="waterfall-exp" />
+                            <input class="mdl-textfield__input" type="text" name="sample" id="waterfall-exp" />
                         </div>
                     </div>
-                </div>
-                <!-- Bottom row, not visible on scroll -->
-                <div class="mdl-layout__header-row">
-                    <div class="mdl-layout-spacer"></div>
-                    <!-- Navigation -->
-                    <nav class="mdl-navigation">
-                        <a class="mdl-navigation__link" href="">Link</a>
-                        <a class="mdl-navigation__link" href="">Link</a>
-                        <a class="mdl-navigation__link" href="">Link</a>
-                        <a class="mdl-navigation__link" href="">Link</a>
-                    </nav>
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-layout--small-screen-only" id="hdrbtn">
+                        <i class="material-icons">more_vert</i>
+                    </button>
+                    <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+                        <li class="mdl-menu__item"><i class="material-icons" role="presentation">home</i>Home</a></li>
+                        <li class="mdl-menu__item"><i class="material-icons" role="presentation">inbox</i>Inbox</a></li>
+                        <li class="mdl-menu__item"><i class="material-icons" role="presentation">delete</i>Trash</a></li>
+                        <li class="mdl-menu__item"><i class="material-icons" role="presentation">report</i>Spam</a></li>
+                    </ul>
                 </div>
             </header>
             <div class="mdl-layout__drawer">
-                <span class="mdl-layout-title">Title</span>
-                <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a>
+                <header class="demo-drawer-header mdl-color--green-700 mdl-color-text--grey-200">
+                    <img src="img/60x60.jpg" class="demo-avatar">
+                    <div class="demo-avatar-dropdown">
+                        <span>hello@example.com</span>
+                        <div class="mdl-layout-spacer"></div>
+                        <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                            <i class="material-icons" role="presentation">arrow_drop_down</i>
+                            <span class="visuallyhidden">Accounts</span>
+                        </button>
+                        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+                            <li class="mdl-menu__item">hello@example.com</li>
+                            <li class="mdl-menu__item">info@example.com</li>
+                            <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li>
+                        </ul>
+                    </div>
+                </header>
+                <nav class="demo-navigation mdl-navigation">
+                    <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
+                    <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Inbox</a>
+                    <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">delete</i>Trash</a>
+                    <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Spam</a>
+                    <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Forums</a>
+
+                    <div class="mdl-layout-spacer"></div>
+                    <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
                 </nav>
             </div>
             <main class="mdl-layout__content">
-                <div class="page-content"><!-- Your content goes here --></div>
+                <div class="page-content" style="min-height: 600px;">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--3-col mdl-cell--6-col-phone">CS 2 (4 on phone)</div>
+                        <div class="mdl-cell mdl-cell--3-col mdl-cell--6-col-phone">CS 2 (4 on phone)</div>
+                        <div class="mdl-cell mdl-cell--3-col mdl-cell--6-col-phone">CS 2 (4 on phone)</div>
+                        <div class="mdl-cell mdl-cell--3-col mdl-cell--6-col-phone">CS 2 (4 on phone)</div>
+                    </div>
+                    <div class="mdl-tabs mdl-js-tabs">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#tab1" class="mdl-tabs__tab">Tab One</a>
+                            <a href="#tab2" class="mdl-tabs__tab">Tab Two</a>
+                            <a href="#tab3" class="mdl-tabs__tab">Tab Three</a>
+                        </div>
+                        <div class="mdl-tabs__panel is-active" id="tab1">
+                            <p>First tab's content.</p>
+                        </div>
+                        <div class="mdl-tabs__panel" id="tab2">
+                            <p>Second tab's content.</p>
+                        </div>
+                        <div class="mdl-tabs__panel" id="tab3">
+                            <p>Third tab's content.</p>
+                        </div>
+                    </div>
+                </div>
+                <footer class="mdl-mini-footer">
+                    <div class="mdl-mini-footer__left-section">
+                        <div class="mdl-logo">
+                            More Information
+                        </div>
+                        <ul class="mdl-mini-footer__link-list">
+                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Privacy and Terms</a></li>
+                            <li><a href="#">User Agreement</a></li>
+                        </ul>
+                    </div>
+                    <div class="mdl-mini-footer__right-section">
+                        <button class="mdl-mini-footer__social-btn"></button>
+                        <button class="mdl-mini-footer__social-btn"></button>
+                        <button class="mdl-mini-footer__social-btn"></button>
+                    </div>
+                </footer>
             </main>
+            
         </div>
     	<!-- <script src="js/vendor/angular-route.js"></script>
         <script src="js/vendor/angular-resource.js"></script> -->
