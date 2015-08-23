@@ -1,5 +1,5 @@
-.demo-header .material-icons {
-  font-size: 1em;
+html {
+  font-size: 62.5%;
 }
 .demo-drawer-header {
   box-sizing: border-box;
@@ -41,7 +41,7 @@
   align-items: center;
   width: 100%;
 }
-.demo-navigation .mdl-navigation__link {
+.demo-navigation a {
   display: -webkit-box !important;
   display: -webkit-flex !important;
   display: -ms-flexbox !important;
@@ -58,7 +58,7 @@
   color: rgba(255, 255, 255, 0.56);
   font-weight: 500;
 }
-.demo-navigation .mdl-navigation__link .material-icons {
+.demo-navigation a .material-icons {
   margin-right: 1em;
 }
 .mdl-layout__drawer-button {

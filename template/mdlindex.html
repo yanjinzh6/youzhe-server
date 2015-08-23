@@ -21,8 +21,8 @@
         <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
         <link href="css/material-icon.css" rel="stylesheet">
         <link rel="stylesheet" href="less/style.css">
-        <!-- <script src="js/vendor/angular.js"></script> -->
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        <!-- <script src="js/vendor/angular.js"></script>
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script> -->
     </head>
     <body>
         <!-- Uses a header that contracts as the page scrolls down. -->
@@ -50,11 +50,11 @@
                     <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-layout--small-screen-only" id="hdrbtn">
                         <i class="material-icons">more_vert</i>
                     </button>
-                    <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-                        <li class="mdl-menu__item"><i class="material-icons" role="presentation">home</i>Home</a></li>
-                        <li class="mdl-menu__item"><i class="material-icons" role="presentation">inbox</i>Inbox</a></li>
-                        <li class="mdl-menu__item"><i class="material-icons" role="presentation">delete</i>Trash</a></li>
-                        <li class="mdl-menu__item"><i class="material-icons" role="presentation">report</i>Spam</a></li>
+                    <ul class="demo-navigation mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+                        <li class="mdl-menu__item"><a class="mdl-navigation__link mdl-color-text--grey-900" href=""><i class="material-icons" role="presentation">home</i>Home</a></li>
+                        <li class="mdl-menu__item"><a class="mdl-navigation__link mdl-color-text--grey-900" href=""><i class="material-icons" role="presentation">inbox</i>Inbox</a></li>
+                        <li class="mdl-menu__item"><a class="mdl-navigation__link mdl-color-text--grey-900" href=""><i class="material-icons" role="presentation">delete</i>Trash</a></li>
+                        <li class="mdl-menu__item"><a class="mdl-navigation__link mdl-color-text--grey-900" href=""><i class="material-icons" role="presentation">report</i>Spam</a></li>
                     </ul>
                 </div>
             </header>
@@ -88,11 +88,16 @@
             </div>
             <main class="mdl-layout__content">
                 <div class="page-content" style="min-height: 600px;">
+                    <div class="login-layout mdl-layout mdl-js-layout">
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">Welcome</h2>
+                        </div>
+                    </div>
                     <div class="mdl-grid">
-                        <div class="mdl-cell mdl-cell--3-col mdl-cell--6-col-phone">CS 2 (4 on phone)</div>
-                        <div class="mdl-cell mdl-cell--3-col mdl-cell--6-col-phone">CS 2 (4 on phone)</div>
-                        <div class="mdl-cell mdl-cell--3-col mdl-cell--6-col-phone">CS 2 (4 on phone)</div>
-                        <div class="mdl-cell mdl-cell--3-col mdl-cell--6-col-phone">CS 2 (4 on phone)</div>
+                        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-table mdl-cell--6-col-phone">CS 2 (4 on phone)</div>
+                        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-table mdl-cell--6-col-phone">CS 2 (4 on phone)</div>
+                        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-table mdl-cell--6-col-phone">CS 2 (4 on phone)</div>
+                        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-table mdl-cell--6-col-phone">CS 2 (4 on phone)</div>
                     </div>
                     <div class="mdl-tabs mdl-js-tabs">
                         <div class="mdl-tabs__tab-bar">
