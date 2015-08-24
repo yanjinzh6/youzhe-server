@@ -88,59 +88,44 @@
             </div>
             <main class="mdl-layout__content">
                 
-                <div class="page-content" style="min-height: 600px;">
+                <div class="page-content" style="min-height: 1000px;">
                     
                     <div class="mdl-grid">
-                        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-table mdl-cell--6-col-phone">CS 2 (4 on phone)</div>
-                        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-table mdl-cell--6-col-phone">CS 2 (4 on phone)</div>
-                        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-table mdl-cell--6-col-phone">CS 2 (4 on phone)</div>
-                        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-table mdl-cell--6-col-phone">CS 2 (4 on phone)</div>
-                    </div>
-                    <div class="mdl-tabs mdl-js-tabs">
-                        <div class="mdl-tabs__tab-bar">
-                            <a href="#tab1" class="mdl-tabs__tab">Tab One</a>
-                            <a href="#tab2" class="mdl-tabs__tab">Tab Two</a>
-                            <a href="#tab3" class="mdl-tabs__tab">Tab Three</a>
-                        </div>
-                        <div class="mdl-tabs__panel is-active" id="tab1">
-                            <p>First tab's content.</p>
-                        </div>
-                        <div class="mdl-tabs__panel" id="tab2">
-                            <p>Second tab's content.</p>
-                        </div>
-                        <div class="mdl-tabs__panel" id="tab3">
-                            <p>Third tab's content.</p>
+                        <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-table mdl-cell--2-col-phone">
+                            
                         </div>
                     </div>
                 </div>
-                <footer class="mdl-mini-footer">
-                    <div class="mdl-mini-footer__left-section">
-                        <div class="mdl-logo">
-                            More Information
-                        </div>
-                        <ul class="mdl-mini-footer__link-list">
-                            <li><a href="#">Help</a></li>
-                            <li><a href="#">Privacy and Terms</a></li>
-                            <li><a href="#">User Agreement</a></li>
-                        </ul>
-                    </div>
-                    <div class="mdl-mini-footer__right-section">
-                        <button class="mdl-mini-footer__social-btn"></button>
-                        <button class="mdl-mini-footer__social-btn"></button>
-                        <button class="mdl-mini-footer__social-btn"></button>
-                    </div>
-                </footer>
+                
             </main>
-            <main class="view-content mdl-color--grey-300">
-                <div class="register-layout mdl-layout mdl-js-layout">
-                    <div class="mdl-card__title mdl-color--green-900 mdl-color-text--grey-100">
-                        
-                        <h2 class="mdl-card__title-text">REGISTER</h2>
-                    </div>
-                    <div class="mdl-card__actions">
+            <main class="view-content mdl-color--grey-300" style="display: block;">
+                <div class="register-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
+                    <header class="mdl-layout__header mdl-color--green-700 mdl-color-text--grey-100">
+                        <!-- Top row, always visible -->
+                        <div class="mdl-layout__drawer-button">
+                            <i class="material-icons">arrow_back</i>
+                        </div>
+                        <div class="mdl-layout__header-row">
+                            <!-- Title -->
+                            
+                            <span class="mdl-layout-title">REGISTER</span>
+                            <div class="mdl-layout-spacer"></div>
+                            
+                            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons">share</i>
+                            </button>
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn2">
+                                <i class="material-icons">more_vert</i>
+                            </button>
+                            <ul class="demo-navigation mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn2">
+                                <li class="mdl-menu__item"><a class="mdl-navigation__link mdl-color-text--grey-900" href=""><i class="material-icons" role="presentation">home</i>Home</a></li>
+                            </ul>
+                        </div>
+                    </header>
+                    <main class="mdl-layout__content">
                         <div class="mdl-grid">
-                            <div class="mdl-cell mdl-cell--4-col mdl-layout--large-screen-only"></div>
-                            <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-phone">
+                            <div class="mdl-cell mdl-cell--4-col mdl-cell--2-col-table mdl-cell--1-col-phone"></div>
+                            <div class="mdl-cell mdl-cell--4-col mdl-cell--2-col-table mdl-cell--4-col-phone">
                                 <form action="#">
                                     <div>
                                         <img src="img/60x60.jpg" class="demo-avatar">
@@ -202,34 +187,30 @@
                                         </a>
                                     </div>
                                 </form>
-                                <!-- <div class="mdl-card mdl-shadow--2dp">
-                                    <div class="mdl-card__supporting-text">
-                                        
-                                    </div>
-                                    <div class="mdl-card__actions">
-                                        
-                                    </div>
-                                </div> -->
                                 
                             </div>
                         </div>
                         
-                    </div>
-                    <div class="mdl-card__back mdl-color-text--grey-100">
-                        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                            <i class="material-icons">arrow_back</i>
-                        </button>
-                    </div>
-                    <div class="mdl-card__menu mdl-color-text--grey-100">
-                        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                            <i class="material-icons">share</i>
-                        </button>
-                        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                            <i class="material-icons">more_vert</i>
-                        </button>
-                    </div>
+                    </main>
                 </div>
             </main>
+            <footer class="mdl-mini-footer mdl-layout--large-screen-only">
+                <div class="mdl-mini-footer__left-section">
+                    <div class="mdl-logo">
+                        More Information
+                    </div>
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Privacy and Terms</a></li>
+                        <li><a href="#">User Agreement</a></li>
+                    </ul>
+                </div>
+                <div class="mdl-mini-footer__right-section">
+                    <button class="mdl-mini-footer__social-btn"></button>
+                    <button class="mdl-mini-footer__social-btn"></button>
+                    <button class="mdl-mini-footer__social-btn"></button>
+                </div>
+            </footer>
         </div>
     	<!-- <script src="js/vendor/angular-route.js"></script>
         <script src="js/vendor/angular-resource.js"></script> -->

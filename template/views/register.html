@@ -1,21 +1,89 @@
-<div class="register">
-	<form class="yz-form" name="signup_form" novalidate ng-submit="register()">
-		<div class="pure-g">
-			<div class="pure-u-1 pure-u-md-1 pure-u-lg-1">
-				<input type="text" name="name" placeholder="name" ng-minlength=3 ng-maxlength=20 required ng-model="user.name">
-			</div>
-			<div class="pure-u-1 pure-u-md-1 pure-u-lg-1">
-				<input type="password" name="password" placeholder="password" required ng-model="user.password">
-			</div>
-			<div class="pure-u-1 pure-u-md-1 pure-u-lg-1">
-				<input type="password" name="repassword" placeholder="repassword" required>
-			</div>
-			<div class="pure-u-1 pure-u-md-1 pure-u-lg-1">
-				<input type="text" name="email" placeholder="email" required ng-model="user.email">
-			</div>
-			<div class="pure-u-1 pure-u-md-1 pure-u-lg-1">
-				<input type="submit" class="yz-btn btn-success" value="注册">
-			</div>
-		</div>
-	</form>
+<div class="register-layout mdl-layout mdl-js-layout">
+    <div class="mdl-card__title mdl-color--green-900 mdl-color-text--grey-100">
+        
+        <h2 class="mdl-card__title-text">REGISTER</h2>
+    </div>
+    <div class="mdl-card__actions">
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--4-col mdl-layout--large-screen-only"></div>
+            <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-phone">
+                <form action="#">
+                    <div>
+                        <img src="img/60x60.jpg" class="demo-avatar">
+                    </div>
+                    <div class="">
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="file" id="imageFile" />
+                            <label class="mdl-textfield__label" for="imageFile">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="user" />
+                            <label class="mdl-textfield__label" for="user">
+                                Enter your name
+                            </label>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="email" />
+                            <label class="mdl-textfield__label" for="email">
+                                Enter your email
+                            </label>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="password" id="password" />
+                            <label class="mdl-textfield__label" for="password">
+                                Enter password
+                            </label>
+                        </div>
+                    </div>
+                    <!-- <div class="">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="password" id="repassword" />
+                            <label class="mdl-textfield__label" for="repassword">
+                                Enter repassword
+                            </label>
+                        </div>
+                    </div> -->
+                    <div class="form-row">
+                        <label for="checkbox" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" id="checkbox" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">I agree User Agreement</span>
+                        </label>
+                    </div>
+                    <div class="form-row"><a href=""><label for="">&lt;&lt;User Agreement&gt;&gt;</label></a></div>
+                    <div class="">
+                        <a class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">keyboard_backspace</i>
+                            Back
+                        </a>
+                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect float-right">
+                            Next
+                            <i class="material-icons">forward</i>
+                        </a>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+        
+    </div>
+    <div class="mdl-card__back mdl-color-text--grey-100">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+            <i class="material-icons">arrow_back</i>
+        </button>
+    </div>
+    <div class="mdl-card__menu mdl-color-text--grey-100">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+            <i class="material-icons">share</i>
+        </button>
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+            <i class="material-icons">more_vert</i>
+        </button>
+    </div>
 </div>
