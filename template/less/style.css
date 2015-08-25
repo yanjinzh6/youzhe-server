@@ -92,6 +92,16 @@ html {
 .mdl-layout__drawer-button {
   color: rgba(0, 0, 0, 0.54);
 }
+.mdl-menu .mdl-menu__item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
 .form-row {
   margin-bottom: 15px;
   margin-left: 10px;
@@ -99,4 +109,8 @@ html {
 .float-right {
   float: right;
   margin-right: 10px;
+}
+.user-list .mdl-card {
+  width: auto;
+  height: auto;
 }

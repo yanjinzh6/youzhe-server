@@ -1,0 +1,94 @@
+<div class="register-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header mdl-color--green-900 mdl-color-text--grey-100">
+        <!-- Top row, always visible -->
+        <div class="mdl-layout__drawer-button">
+            <i class="material-icons">arrow_back</i>
+        </div>
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            
+            <span class="mdl-layout-title">REGISTER</span>
+            <div class="mdl-layout-spacer"></div>
+            
+            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                <i class="material-icons">share</i>
+            </button>
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn2">
+                <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn2">
+                <li class="mdl-menu__item mdl-js-ripple-effect"><i class="material-icons" role="presentation">home</i>Home</li>
+            </ul>
+        </div>
+    </header>
+    <main class="mdl-layout__content">
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--4-col mdl-cell--2-col-table mdl-cell--2-col-tablet mdl-cell--hide-phone"></div>
+            <div class="mdl-cell mdl-cell--4-col">
+                <form action="#">
+                    <div>
+                        <img src="img/60x60.jpg" class="demo-avatar">
+                    </div>
+                    <div class="">
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="file" id="imageFile" />
+                            <label class="mdl-textfield__label" for="imageFile">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="user" />
+                            <label class="mdl-textfield__label" for="user">
+                                Enter your name
+                            </label>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="email" />
+                            <label class="mdl-textfield__label" for="email">
+                                Enter your email
+                            </label>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="password" id="password" />
+                            <label class="mdl-textfield__label" for="password">
+                                Enter password
+                            </label>
+                        </div>
+                    </div>
+                    <!-- <div class="">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="password" id="repassword" />
+                            <label class="mdl-textfield__label" for="repassword">
+                                Enter repassword
+                            </label>
+                        </div>
+                    </div> -->
+                    <div class="form-row">
+                        <label for="checkbox" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" id="checkbox" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">I agree User Agreement</span>
+                        </label>
+                    </div>
+                    <div class="form-row"><a href=""><label for="">&lt;&lt;User Agreement&gt;&gt;</label></a></div>
+                    <div class="">
+                        <a class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">keyboard_backspace</i>
+                            Back
+                        </a>
+                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect float-right">
+                            Next
+                            <i class="material-icons">forward</i>
+                        </a>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+        
+    </main>
+</div>
