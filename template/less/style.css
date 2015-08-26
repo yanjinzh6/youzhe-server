@@ -118,6 +118,13 @@ html {
 .user-list .mdl-card__actions {
   background: rgba(0, 0, 0, 0.2);
 }
+.user-list .mdl-menu {
+  height: 100px;
+  overflow-y: auto;
+}
+.user-list .mdl-menu .mdl-menu__item {
+  line-height: 24px;
+}
 @media (min-width: 1440px) {
   .mdl-grid {
     padding: 8px;
