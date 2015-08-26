@@ -9642,7 +9642,7 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
     .mdl-grid--no-spacing > .mdl-cell--12-col-tablet.mdl-cell--12-col-tablet {
       width: 100%; } }
 
-@media (min-width: 840px) {
+@media (min-width: 840px) and (max-width: 1439px) {
   .mdl-grid {
     padding: 8px; }
   .mdl-cell {
